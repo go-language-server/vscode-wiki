@@ -1,0 +1,114 @@
+site_name: Visual Studio Code Wiki
+site_description: Personal fork of Visual Studio Code Wiki
+
+theme:
+  name: "material"
+  include_search_page: true
+  search_index_only: true
+  include_homepage_in_sidebar: true
+  prev_next_buttons_location: "bottom"
+  palette:
+    primary: 'blue'
+    accent: 'blue'
+google_analytics:
+  - "UA-89201129-1"
+  - "https://go-language-server.github.io/vscode-wiki/"
+repo_name: zchee/golang-wiki
+site_url: https://go-language-server.github.io/vscode-wiki/
+repo_url: https://github.com/go-language-server/vscode-wiki
+docs_dir: "../"
+site_dir: "../../docs"
+
+extra_javascript:
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML'
+
+markdown_extensions:
+  - toc
+  - admonition
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+plugins:
+  - search
+
+nav:
+  - Home: Home.md
+  - Project Management:
+    - Roadmap: Roadmap.md
+    - Iteration Plans: Iteration-Plans.md
+    - Development Process: Development-Process.md
+    - Issue Tracking:
+      - Issue Tracking: Issue-Tracking.md
+      - Issues Triaging: Issues-Triaging.md
+      - Performance Issues: Performance-Issues.md
+      - Community Issue Tracking: Community-Issue-Tracking.md
+      - Keybinding Issues: Keybinding-Issues.md
+      - Native Crash Issues: Native-Crash-Issues.md
+      - Search Issues: Search-Issues.md
+      - Issue Grooming: Issue-Grooming.md
+    - Build Master: Build-Master.md
+    - Release Process: Release-Process.md
+    - Running the Endgame: Running-the-Endgame.md
+    - Related Projects: Related-Projects.md
+  - Contributing:
+    - How to Contribute: How-to-Contribute.md
+    - Submitting Bugs and Suggestions: Submitting-Bugs-and-Suggestions.md
+    - Feedback Channels: Feedback-Channels.md
+    - Source Code Organization: Source-Code-Organization.md
+    - Coding Guidelines: Coding-Guidelines.md
+    - Smoke Test: Smoke-Test.md
+    - Contributor License Agreement: Contributor-License-Agreement.md
+    - Requested Extensions: https://github.com/Microsoft/vscode/wiki/Requested-Extensions
+    - Extension API Guidelines: Extension-API-guidelines.md
+  - Documentation:
+    - Extensions: https://code.visualstudio.com/docs/extensions/overview
+    - API: https://code.visualstudio.com/docs/extensionAPI/overview
+    - Visual Studio Code: https://code.visualstudio.com/docs
+    - Document Repository: https://github.com/microsoft/vscode-docs
+    - Multi Root Workspace API: https://github.com/Microsoft/vscode/wiki/Adopting-Multi-Root-Workspace-APIs
+  - Adopting Multi Root Workspace APIs: Adopting-Multi-Root-Workspace-APIs.md
+  - Code Editor Roadmap: Code-Editor-Roadmap.md
+  - Color customization color id changes: Color-customization-color-id-changes.md
+  - Cross Compiling for Debian Based Linux: Cross-Compiling-for-Debian-Based-Linux.md
+  - December Pre Release: December-Pre-Release.md
+  - December Test Plan: December-Test-Plan.md
+  - Design Goals: Design-Goals.md
+  - Differences between the repository and Visual Studio Code: Differences-between-the-repository-and-Visual-Studio-Code.md
+  - Editor decorations & colors: Editor-decorations-&-colors.md
+  - Explain extension causes high cpu load: Explain-extension-causes-high-cpu-load.md
+  - Extension API process: Extension-API-process.md
+  - Feature Areas: Feature-Areas.md
+  - IME Test: IME-Test.md
+  - Insiders Release Notes: Insiders-Release-Notes.md
+  - Known issues: Known-issues.md
+  - Lists And Trees: Lists-And-Trees.md
+  - November Plan: November-Plan.md
+  - Performance Issues (old): Performance-Issues-(old).md
+  - Pointer Device  & Touch support: Pointer-Device--&-Touch-support.md
+  - Publish vscode types: Publish-vscode-types.md
+  - Removing Insiders: Removing-Insiders.md
+  - Roadmap 2017: Roadmap-2017.md
+  - Roadmap 2018: Roadmap-2018.md
+  - Roadmap 2019: Roadmap-2019.md
+  - Semantic Highlighting Overview: Semantic-Highlighting-Overview.md
+  - Setting Descriptions: Setting-Descriptions.md
+  - Terminal Issues: Terminal-Issues.md
+  - UX: UX.md
+  - Working with xterm.js: Working-with-xterm.js.md
+  - "[WIP] Code Editor Design Doc": "[WIP]-Code-Editor-Design-Doc.md"
+  - "[WIP] Design Checklist": "[WIP]-Design-Checklist.md"
+  - "[WIP] Design Principles": "[WIP]-Design-Principles.md"
