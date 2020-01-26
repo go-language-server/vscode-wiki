@@ -1,0 +1,1421 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Personal fork of Visual Studio Code Wiki">
+      
+      
+        <link rel="canonical" href="https://go-language-server.github.io/vscode-wiki/Issue-Grooming/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>Issue Grooming - Visual Studio Code Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.1b62728e.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-89201129-1", "https://go-language-server.github.io/vscode-wiki/")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#closing-issues" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://go-language-server.github.io/vscode-wiki/" title="Visual Studio Code Wiki" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Visual Studio Code Wiki
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Issue Grooming
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/go-language-server/vscode-wiki/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    zchee/golang-wiki
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://go-language-server.github.io/vscode-wiki/" title="Visual Studio Code Wiki" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Visual Studio Code Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/go-language-server/vscode-wiki/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    zchee/golang-wiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Home/" title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Project Management
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Project Management
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Roadmap/" title="Roadmap" class="md-nav__link">
+      Roadmap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Iteration-Plans/" title="Iteration Plans" class="md-nav__link">
+      Iteration Plans
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Development-Process/" title="Development Process" class="md-nav__link">
+      Development Process
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4" checked>
+    
+    <label class="md-nav__link" for="nav-2-4">
+      Issue Tracking
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-4">
+        Issue Tracking
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Issue-Tracking/" title="Issue Tracking" class="md-nav__link">
+      Issue Tracking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Issues-Triaging/" title="Issues Triaging" class="md-nav__link">
+      Issues Triaging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Performance-Issues/" title="Performance Issues" class="md-nav__link">
+      Performance Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Community-Issue-Tracking/" title="Community Issue Tracking" class="md-nav__link">
+      Community Issue Tracking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Keybinding-Issues/" title="Keybinding Issues" class="md-nav__link">
+      Keybinding Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Native-Crash-Issues/" title="Native Crash Issues" class="md-nav__link">
+      Native Crash Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Search-Issues/" title="Search Issues" class="md-nav__link">
+      Search Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Issue Grooming
+      </label>
+    
+    <a href="./" title="Issue Grooming" class="md-nav__link md-nav__link--active">
+      Issue Grooming
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#out-of-scope-feature-requests" class="md-nav__link">
+    Out-of-Scope Feature Requests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wont-fix-bugs" class="md-nav__link">
+    Won't fix Bugs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upstream-issue" class="md-nav__link">
+    Upstream Issue
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Build-Master/" title="Build Master" class="md-nav__link">
+      Build Master
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Release-Process/" title="Release Process" class="md-nav__link">
+      Release Process
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Running-the-Endgame/" title="Running the Endgame" class="md-nav__link">
+      Running the Endgame
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Related-Projects/" title="Related Projects" class="md-nav__link">
+      Related Projects
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Contributing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Contributing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../How-to-Contribute/" title="How to Contribute" class="md-nav__link">
+      How to Contribute
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Submitting-Bugs-and-Suggestions/" title="Submitting Bugs and Suggestions" class="md-nav__link">
+      Submitting Bugs and Suggestions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Feedback-Channels/" title="Feedback Channels" class="md-nav__link">
+      Feedback Channels
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Source-Code-Organization/" title="Source Code Organization" class="md-nav__link">
+      Source Code Organization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Coding-Guidelines/" title="Coding Guidelines" class="md-nav__link">
+      Coding Guidelines
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Smoke-Test/" title="Smoke Test" class="md-nav__link">
+      Smoke Test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Contributor-License-Agreement/" title="Contributor License Agreement" class="md-nav__link">
+      Contributor License Agreement
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/Microsoft/vscode/wiki/Requested-Extensions" title="Requested Extensions" class="md-nav__link">
+      Requested Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Extension-API-guidelines/" title="Extension API Guidelines" class="md-nav__link">
+      Extension API Guidelines
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Documentation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Documentation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://code.visualstudio.com/docs/extensions/overview" title="Extensions" class="md-nav__link">
+      Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://code.visualstudio.com/docs/extensionAPI/overview" title="API" class="md-nav__link">
+      API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://code.visualstudio.com/docs" title="Visual Studio Code" class="md-nav__link">
+      Visual Studio Code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/microsoft/vscode-docs" title="Document Repository" class="md-nav__link">
+      Document Repository
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/Microsoft/vscode/wiki/Adopting-Multi-Root-Workspace-APIs" title="Multi Root Workspace API" class="md-nav__link">
+      Multi Root Workspace API
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Adopting-Multi-Root-Workspace-APIs/" title="Adopting Multi Root Workspace APIs" class="md-nav__link">
+      Adopting Multi Root Workspace APIs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Code-Editor-Roadmap/" title="Code Editor Roadmap" class="md-nav__link">
+      Code Editor Roadmap
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Color-customization-color-id-changes/" title="Color customization color id changes" class="md-nav__link">
+      Color customization color id changes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Cross-Compiling-for-Debian-Based-Linux/" title="Cross Compiling for Debian Based Linux" class="md-nav__link">
+      Cross Compiling for Debian Based Linux
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../December-Pre-Release/" title="December Pre Release" class="md-nav__link">
+      December Pre Release
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../December-Test-Plan/" title="December Test Plan" class="md-nav__link">
+      December Test Plan
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Design-Goals/" title="Design Goals" class="md-nav__link">
+      Design Goals
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Differences-between-the-repository-and-Visual-Studio-Code/" title="Differences between the repository and Visual Studio Code" class="md-nav__link">
+      Differences between the repository and Visual Studio Code
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Editor-decorations-&-colors/" title="Editor decorations & colors" class="md-nav__link">
+      Editor decorations & colors
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Explain-extension-causes-high-cpu-load/" title="Explain extension causes high cpu load" class="md-nav__link">
+      Explain extension causes high cpu load
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Extension-API-process/" title="Extension API process" class="md-nav__link">
+      Extension API process
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Feature-Areas/" title="Feature Areas" class="md-nav__link">
+      Feature Areas
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../IME-Test/" title="IME Test" class="md-nav__link">
+      IME Test
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Insiders-Release-Notes/" title="Insiders Release Notes" class="md-nav__link">
+      Insiders Release Notes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Known-issues/" title="Known issues" class="md-nav__link">
+      Known issues
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Lists-And-Trees/" title="Lists And Trees" class="md-nav__link">
+      Lists And Trees
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../November-Plan/" title="November Plan" class="md-nav__link">
+      November Plan
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Performance-Issues-(old)/" title="Performance Issues (old)" class="md-nav__link">
+      Performance Issues (old)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Pointer-Device--&-Touch-support/" title="Pointer Device & Touch support" class="md-nav__link">
+      Pointer Device  & Touch support
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Publish-vscode-types/" title="Publish vscode types" class="md-nav__link">
+      Publish vscode types
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Removing-Insiders/" title="Removing Insiders" class="md-nav__link">
+      Removing Insiders
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Roadmap-2017/" title="Roadmap 2017" class="md-nav__link">
+      Roadmap 2017
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Roadmap-2018/" title="Roadmap 2018" class="md-nav__link">
+      Roadmap 2018
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Roadmap-2019/" title="Roadmap 2019" class="md-nav__link">
+      Roadmap 2019
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Semantic-Highlighting-Overview/" title="Semantic Highlighting Overview" class="md-nav__link">
+      Semantic Highlighting Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Setting-Descriptions/" title="Setting Descriptions" class="md-nav__link">
+      Setting Descriptions
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Terminal-Issues/" title="Terminal Issues" class="md-nav__link">
+      Terminal Issues
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../UX/" title="UX" class="md-nav__link">
+      UX
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Working-with-xterm.js/" title="Working with xterm.js" class="md-nav__link">
+      Working with xterm.js
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../[WIP]-Code-Editor-Design-Doc/" title="[WIP] Code Editor Design Doc" class="md-nav__link">
+      [WIP] Code Editor Design Doc
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../[WIP]-Design-Checklist/" title="[WIP] Design Checklist" class="md-nav__link">
+      [WIP] Design Checklist
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../[WIP]-Design-Principles/" title="[WIP] Design Principles" class="md-nav__link">
+      [WIP] Design Principles
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#out-of-scope-feature-requests" class="md-nav__link">
+    Out-of-Scope Feature Requests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wont-fix-bugs" class="md-nav__link">
+    Won't fix Bugs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upstream-issue" class="md-nav__link">
+    Upstream Issue
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/go-language-server/vscode-wiki/edit/master/docs/Issue-Grooming.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <p>Our GitHub community is one of the biggest reasons of our success. Every single day, you create between 50 - 250 issues with inspiring ideas for new functionality, you tell us what works as expected and what doesn't, and you tell us how to improve what's already there. We appreciate every single issue you create. Thank you!</p>
+<p>Despite our best efforts to deal with all of those issues, over the course of time we fall behind. When you look at an issue it's sometimes unclear whether or not we intent to provide the functionality you propose, whether or not we fix the bug, whether or not the issue is a duplicate of another one.</p>
+<p>In order to restore a reasonable level of clarity we annually perform a House Keeping Iteration in which we go through all open issues. We categorize, label, fix, and close issues. This results in a wave of notification which is hard to deal with (our apologies) but in the end there is better understanding of what will happen to your ideas.</p>
+<p>Below are more details about what we do during a House Keeping Iteration.</p>
+<h1 id="closing-issues">Closing Issues</h1>
+<p>We close issues for the following reasons:</p>
+<table>
+<thead>
+<tr>
+<th>Reason</th>
+<th>Label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The issue is obsolete or already fixed.</td>
+<td></td>
+</tr>
+<tr>
+<td>We didn't get the information we need within 7 days.</td>
+<td><code>needs more info</code></td>
+</tr>
+<tr>
+<td>It's a duplicate of another issue.</td>
+<td><code>*duplicate</code></td>
+</tr>
+<tr>
+<td>The feature request is best implemented by an extension.</td>
+<td><code>*extension-candidate</code></td>
+</tr>
+<tr>
+<td>What is described is the designed behavior.</td>
+<td><code>*as-designed</code></td>
+</tr>
+<tr>
+<td>The issue was caused by an extension.</td>
+<td><code>*caused-by-extension</code></td>
+</tr>
+<tr>
+<td>The issue is a developer question.</td>
+<td><code>*dev-question</code></td>
+</tr>
+<tr>
+<td>The issue is a user question.</td>
+<td><code>*question</code></td>
+</tr>
+<tr>
+<td>The issue is off-topic, does not contain any actionable information or was unintended.</td>
+<td><code>invalid</code></td>
+</tr>
+<tr>
+<td>Given the information we have we can't reproduce the issue.</td>
+<td><code>*not-reproducible</code></td>
+</tr>
+<tr>
+<td>The feature request is out of scope. (See <a href="#out-of-scope-feature-requests">below</a>)</td>
+<td><code>*out-of-scope</code></td>
+</tr>
+</tbody>
+</table>
+<p>We close issues with the help of a bot that responds to a particular comment such as <code>/duplicate of #1234</code> or to assigning a label with adding a pre-canned comment to the issue and closing the issue.</p>
+<h2 id="out-of-scope-feature-requests">Out-of-Scope Feature Requests</h2>
+<p>Feature requests like all issues are a means of communication between us and our community as well as among members of the community. Thus, in principle, we could keep all feature requests open no matter what will happen to the feature they describe. But this makes it hard for you to understand what has realistic chances to ever make it into the repository. We therefore close feature requests we won't address. </p>
+<p>If you are the author of a feature request you might not like that we close your issue. It might even feel like a slap in your face. We understand that. All of us have been there as well - in this project or others we have contributed to. So, be assured, we love all of your input. Don't take personal offense when we decide to close your issue <img alt="☮️" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/262e.svg" title=":peace_symbol:" />. If you feel your feature request deserves to stay open, improve your use case or gather more up-votes. Then ping us and we'll consider reopening the feature request.</p>
+<p>Here are the criteria we use to make the decision about closing a feature request:
+1. Does the functionality described in the feature request have any reasonable chance to be implemented in the next 24 months? 24 months is longer than our <a href="https://github.com/Microsoft/vscode/wiki/Roadmap">roadmap</a> which outlines the next 6-12 months. Thus, there is some crystal ball reading on our part, and we'll most likely keep more feature requests open than what we can accomplish in 24 months.
+2. Has the community at large expressed interest in this functionality? I.e. has it gathered more than 10 up-votes or more than 10 comments? This criterion alone covers more than 650 of the 2850 open feature requests as of right now, October 9<sup>th</sup>, 2019. 
+3. Do we think the feature request is bold and forward looking and would we like to see it be tackled at some point even if it's further out than 24 months? (Clearly, this one is the most subjective criterion.)</p>
+<p>If the answer to any of the three questions is <code>yes</code> then we ask about affordability:</p>
+<ol>
+<li>Can our team afford to implement the feature? I.e. are the costs to implement the functionality reasonable compared to the size of our team?</li>
+</ol>
+<p>In summary, a feature needs to pass one of 1-3 and 4. Otherwise, we'll close it as <code>out of scope</code>. We'll unsubscribe from these issues to reduce the overall number of issue notifications we receive every day.</p>
+<h2 id="wont-fix-bugs">Won't fix Bugs</h2>
+<p>We close bugs as <code>won't fix</code> if there is a negative cost-benefit balance. It's not that we don't care about users who are affected by an issue but, for example, if the fix is so complex that despite all of our tests we risk regressions for many users, fixing is not a reasonable choice. When we close a bug as <code>won't fix</code> we'll make our case why we do so.</p>
+<h2 id="upstream-issue">Upstream Issue</h2>
+<p>We label some issues as <code>upstream</code>. Upstream means that the issue is in a package or library that we consume and that we cannot fix independently. We close an <code>upstream</code> issue if we can establish a clear traceability link between the issue in our repository and an issue in the issue tracker of the package or library. In some cases this is not possible, for example, we might have identified an issue as a Chromium issue but Chromium does not accept the issue yet because the repro case is too complex.</p>
+<h1 id="categorizing-issues">Categorizing Issues</h1>
+<p>Each issue must have a <strong>type</strong> label. Most type labels are grey, some are yellow. Bugs are grey with a touch of red.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bug</code></td>
+<td>the implementation of a feature is not correct</td>
+</tr>
+<tr>
+<td><code>feature-request</code></td>
+<td>request for a new feature</td>
+</tr>
+<tr>
+<td><code>under-discussion</code></td>
+<td>not decided whether the issue is a bug or feature</td>
+</tr>
+<tr>
+<td><code>debt</code></td>
+<td>improve the implementation/architecture</td>
+</tr>
+<tr>
+<td><code>needs more info</code></td>
+<td>not possible to assign a type label due to missing information</td>
+</tr>
+<tr>
+<td><code>question</code></td>
+<td>we should direct questions to SO</td>
+</tr>
+<tr>
+<td><code>upstream</code></td>
+<td>an issue used to track an issue in an upstream component</td>
+</tr>
+<tr>
+<td><code>electron</code></td>
+<td>an issue with electron</td>
+</tr>
+<tr>
+<td><code>engineering</code></td>
+<td>issues related to our engineering system or our processes</td>
+</tr>
+</tbody>
+</table>
+<h1 id="labeling-issues">Labeling Issues</h1>
+<ul>
+<li>We assign the <code>important</code> label to issues that</li>
+<li>result in data loss</li>
+<li>a breakage of extension</li>
+<li>critical security, performance issues</li>
+<li>UI issue that makes a feature unusable</li>
+<li>We label issues that the community can take up as <code>help-wanted</code>.</li>
+<li>If issues are suitable for beginners we may add the <code>good-first-issue</code> label and we add code pointers that help beginners to get started with a PR.</li>
+</ul>
+<h1 id="fixing-issues">Fixing Issues</h1>
+<ul>
+<li>We assign bugs that we plan to fix during the grooming to the milestone of the current iteration.</li>
+</ul>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../Search-Issues/" title="Search Issues" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Search Issues
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../Build-Master/" title="Build Master" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Build Master
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

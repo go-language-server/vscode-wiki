@@ -1,0 +1,1886 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Personal fork of Visual Studio Code Wiki">
+      
+      
+        <link rel="canonical" href="https://go-language-server.github.io/vscode-wiki/IME-Test/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>IME Test - Visual Studio Code Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.1b62728e.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-89201129-1", "https://go-language-server.github.io/vscode-wiki/")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#table-of-contents" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://go-language-server.github.io/vscode-wiki/" title="Visual Studio Code Wiki" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Visual Studio Code Wiki
+            </span>
+            <span class="md-header-nav__topic">
+              
+                IME Test
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/go-language-server/vscode-wiki/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    zchee/golang-wiki
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://go-language-server.github.io/vscode-wiki/" title="Visual Studio Code Wiki" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Visual Studio Code Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/go-language-server/vscode-wiki/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    zchee/golang-wiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Home/" title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Project Management
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Project Management
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Roadmap/" title="Roadmap" class="md-nav__link">
+      Roadmap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Iteration-Plans/" title="Iteration Plans" class="md-nav__link">
+      Iteration Plans
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Development-Process/" title="Development Process" class="md-nav__link">
+      Development Process
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4">
+    
+    <label class="md-nav__link" for="nav-2-4">
+      Issue Tracking
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-4">
+        Issue Tracking
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Issue-Tracking/" title="Issue Tracking" class="md-nav__link">
+      Issue Tracking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Issues-Triaging/" title="Issues Triaging" class="md-nav__link">
+      Issues Triaging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Performance-Issues/" title="Performance Issues" class="md-nav__link">
+      Performance Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Community-Issue-Tracking/" title="Community Issue Tracking" class="md-nav__link">
+      Community Issue Tracking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Keybinding-Issues/" title="Keybinding Issues" class="md-nav__link">
+      Keybinding Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Native-Crash-Issues/" title="Native Crash Issues" class="md-nav__link">
+      Native Crash Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Search-Issues/" title="Search Issues" class="md-nav__link">
+      Search Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Issue-Grooming/" title="Issue Grooming" class="md-nav__link">
+      Issue Grooming
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Build-Master/" title="Build Master" class="md-nav__link">
+      Build Master
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Release-Process/" title="Release Process" class="md-nav__link">
+      Release Process
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Running-the-Endgame/" title="Running the Endgame" class="md-nav__link">
+      Running the Endgame
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Related-Projects/" title="Related Projects" class="md-nav__link">
+      Related Projects
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Contributing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Contributing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../How-to-Contribute/" title="How to Contribute" class="md-nav__link">
+      How to Contribute
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Submitting-Bugs-and-Suggestions/" title="Submitting Bugs and Suggestions" class="md-nav__link">
+      Submitting Bugs and Suggestions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Feedback-Channels/" title="Feedback Channels" class="md-nav__link">
+      Feedback Channels
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Source-Code-Organization/" title="Source Code Organization" class="md-nav__link">
+      Source Code Organization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Coding-Guidelines/" title="Coding Guidelines" class="md-nav__link">
+      Coding Guidelines
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Smoke-Test/" title="Smoke Test" class="md-nav__link">
+      Smoke Test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Contributor-License-Agreement/" title="Contributor License Agreement" class="md-nav__link">
+      Contributor License Agreement
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/Microsoft/vscode/wiki/Requested-Extensions" title="Requested Extensions" class="md-nav__link">
+      Requested Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Extension-API-guidelines/" title="Extension API Guidelines" class="md-nav__link">
+      Extension API Guidelines
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Documentation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Documentation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://code.visualstudio.com/docs/extensions/overview" title="Extensions" class="md-nav__link">
+      Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://code.visualstudio.com/docs/extensionAPI/overview" title="API" class="md-nav__link">
+      API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://code.visualstudio.com/docs" title="Visual Studio Code" class="md-nav__link">
+      Visual Studio Code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/microsoft/vscode-docs" title="Document Repository" class="md-nav__link">
+      Document Repository
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/Microsoft/vscode/wiki/Adopting-Multi-Root-Workspace-APIs" title="Multi Root Workspace API" class="md-nav__link">
+      Multi Root Workspace API
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Adopting-Multi-Root-Workspace-APIs/" title="Adopting Multi Root Workspace APIs" class="md-nav__link">
+      Adopting Multi Root Workspace APIs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Code-Editor-Roadmap/" title="Code Editor Roadmap" class="md-nav__link">
+      Code Editor Roadmap
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Color-customization-color-id-changes/" title="Color customization color id changes" class="md-nav__link">
+      Color customization color id changes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Cross-Compiling-for-Debian-Based-Linux/" title="Cross Compiling for Debian Based Linux" class="md-nav__link">
+      Cross Compiling for Debian Based Linux
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../December-Pre-Release/" title="December Pre Release" class="md-nav__link">
+      December Pre Release
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../December-Test-Plan/" title="December Test Plan" class="md-nav__link">
+      December Test Plan
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Design-Goals/" title="Design Goals" class="md-nav__link">
+      Design Goals
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Differences-between-the-repository-and-Visual-Studio-Code/" title="Differences between the repository and Visual Studio Code" class="md-nav__link">
+      Differences between the repository and Visual Studio Code
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Editor-decorations-&-colors/" title="Editor decorations & colors" class="md-nav__link">
+      Editor decorations & colors
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Explain-extension-causes-high-cpu-load/" title="Explain extension causes high cpu load" class="md-nav__link">
+      Explain extension causes high cpu load
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Extension-API-process/" title="Extension API process" class="md-nav__link">
+      Extension API process
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Feature-Areas/" title="Feature Areas" class="md-nav__link">
+      Feature Areas
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        IME Test
+      </label>
+    
+    <a href="./" title="IME Test" class="md-nav__link md-nav__link--active">
+      IME Test
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#windowsmac-japanese" class="md-nav__link">
+    [Windows/Mac] Japanese
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-korean" class="md-nav__link">
+    [Windows] Korean
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-vietnamese-with-unikey" class="md-nav__link">
+    [Windows] Vietnamese with UniKey
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-chinese" class="md-nav__link">
+    [Windows] Chinese
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-sogou-pinyin-chinese-input-method" class="md-nav__link">
+    [Windows] Sogou pinyin Chinese input method
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mac-zhuyin-input-method-chinese" class="md-nav__link">
+    [Mac] Zhuyin Input Method (Chinese)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mac-the-hold-input-method" class="md-nav__link">
+    [Mac] The hold input method
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mac-the-emoji-inserter" class="md-nav__link">
+    [Mac] The emoji inserter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-japanese" class="md-nav__link">
+    [Linux] Japanese
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu" class="md-nav__link">
+    Ubuntu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elementary-os" class="md-nav__link">
+    Elementary OS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test" class="md-nav__link">
+    Test
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-korean" class="md-nav__link">
+    [Linux] Korean
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu_1" class="md-nav__link">
+    Ubuntu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elementary-os_1" class="md-nav__link">
+    Elementary OS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_1" class="md-nav__link">
+    Test
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-chinese-pinyin" class="md-nav__link">
+    [Linux] Chinese (Pinyin)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu_2" class="md-nav__link">
+    Ubuntu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elementary-os_2" class="md-nav__link">
+    Elementary OS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_2" class="md-nav__link">
+    Test
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-chinese-sogou-pinyin" class="md-nav__link">
+    [Linux] Chinese (Sogou Pinyin)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test_3" class="md-nav__link">
+    Test
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Insiders-Release-Notes/" title="Insiders Release Notes" class="md-nav__link">
+      Insiders Release Notes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Known-issues/" title="Known issues" class="md-nav__link">
+      Known issues
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Lists-And-Trees/" title="Lists And Trees" class="md-nav__link">
+      Lists And Trees
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../November-Plan/" title="November Plan" class="md-nav__link">
+      November Plan
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Performance-Issues-(old)/" title="Performance Issues (old)" class="md-nav__link">
+      Performance Issues (old)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Pointer-Device--&-Touch-support/" title="Pointer Device & Touch support" class="md-nav__link">
+      Pointer Device  & Touch support
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Publish-vscode-types/" title="Publish vscode types" class="md-nav__link">
+      Publish vscode types
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Removing-Insiders/" title="Removing Insiders" class="md-nav__link">
+      Removing Insiders
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Roadmap-2017/" title="Roadmap 2017" class="md-nav__link">
+      Roadmap 2017
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Roadmap-2018/" title="Roadmap 2018" class="md-nav__link">
+      Roadmap 2018
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Roadmap-2019/" title="Roadmap 2019" class="md-nav__link">
+      Roadmap 2019
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Semantic-Highlighting-Overview/" title="Semantic Highlighting Overview" class="md-nav__link">
+      Semantic Highlighting Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Setting-Descriptions/" title="Setting Descriptions" class="md-nav__link">
+      Setting Descriptions
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Terminal-Issues/" title="Terminal Issues" class="md-nav__link">
+      Terminal Issues
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../UX/" title="UX" class="md-nav__link">
+      UX
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Working-with-xterm.js/" title="Working with xterm.js" class="md-nav__link">
+      Working with xterm.js
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../[WIP]-Code-Editor-Design-Doc/" title="[WIP] Code Editor Design Doc" class="md-nav__link">
+      [WIP] Code Editor Design Doc
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../[WIP]-Design-Checklist/" title="[WIP] Design Checklist" class="md-nav__link">
+      [WIP] Design Checklist
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../[WIP]-Design-Principles/" title="[WIP] Design Principles" class="md-nav__link">
+      [WIP] Design Principles
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#windowsmac-japanese" class="md-nav__link">
+    [Windows/Mac] Japanese
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-korean" class="md-nav__link">
+    [Windows] Korean
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-vietnamese-with-unikey" class="md-nav__link">
+    [Windows] Vietnamese with UniKey
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-chinese" class="md-nav__link">
+    [Windows] Chinese
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-sogou-pinyin-chinese-input-method" class="md-nav__link">
+    [Windows] Sogou pinyin Chinese input method
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mac-zhuyin-input-method-chinese" class="md-nav__link">
+    [Mac] Zhuyin Input Method (Chinese)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mac-the-hold-input-method" class="md-nav__link">
+    [Mac] The hold input method
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mac-the-emoji-inserter" class="md-nav__link">
+    [Mac] The emoji inserter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-japanese" class="md-nav__link">
+    [Linux] Japanese
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu" class="md-nav__link">
+    Ubuntu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elementary-os" class="md-nav__link">
+    Elementary OS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test" class="md-nav__link">
+    Test
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-korean" class="md-nav__link">
+    [Linux] Korean
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu_1" class="md-nav__link">
+    Ubuntu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elementary-os_1" class="md-nav__link">
+    Elementary OS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_1" class="md-nav__link">
+    Test
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-chinese-pinyin" class="md-nav__link">
+    [Linux] Chinese (Pinyin)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu_2" class="md-nav__link">
+    Ubuntu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elementary-os_2" class="md-nav__link">
+    Elementary OS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_2" class="md-nav__link">
+    Test
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-chinese-sogou-pinyin" class="md-nav__link">
+    [Linux] Chinese (Sogou Pinyin)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test_3" class="md-nav__link">
+    Test
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/go-language-server/vscode-wiki/edit/master/docs/IME-Test.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <p>Input method smoke test. VS Code is powered by <a href="https://github.com/Microsoft/monaco-editor">Monaco</a>, a browser based code editor which supports IE 9/10/11, Edge, Chrome, Firefox, Safari and Opera, so when we make changes to the editor part, we should make sure it still works on all browsers Monaco support.</p>
+<p>The golden standard is Word</p>
+<h1 id="table-of-contents">Table of Contents</h1>
+<ul>
+<li><a href="#windowsmac-japanese">[Windows/Mac] Japanese</a></li>
+<li><a href="#windows-korean">[Windows] Korean</a></li>
+<li><a href="#windows-vietnamese-with-unikey">[Windows] Vietnamese with UniKey</a></li>
+<li><a href="#windows-chinese">[Windows] Chinese</a></li>
+<li><a href="#windows-sogou-pinyin-chinese-input-method">[Windows] Sogou pinyin Chinese input method</a></li>
+<li><a href="#mac-zhuyin-input-method-chinese">[Mac] Zhuyin Input Method (Chinese)</a></li>
+<li><a href="#linux-japanese">[Linux] Japanese</a></li>
+<li><a href="#linux-korean">[Linux] Korean (Hangul)</a></li>
+<li><a href="#linux-chinese-pinyin">[Linux] Chinese (Pinyin)</a></li>
+<li><a href="#linux-chinese-sogou-pinyin">[Linux] Chinese (Sogou Pinyin)</a></li>
+</ul>
+<hr />
+<h2 id="windowsmac-japanese">[Windows/Mac] Japanese</h2>
+<ul>
+<li>Add the Japanese input method</li>
+<li>Windows: <code>Settings &gt; Time &amp; Language &gt; Region &amp; language &gt; Add a language &gt; Japanese</code></li>
+<li>
+<p>Mac: <code>Settings &gt; Keyboard &gt; Input Sources &gt; Add a language &gt; Japanese</code></p>
+</li>
+<li>
+<p>Focus VS Code and switch OS input method to Japanese and choose Hiragana:</p>
+</li>
+<li>Windows:  <img alt="Windows Japanese statusbar" src="../images/ime/windows-japanese-ime.png" /></li>
+<li>
+<p>Mac: Choose Hiragana in the menu bar</p>
+</li>
+<li>
+<p>Type the following words: <code>sennsei</code> or <code>konnichiha</code> or <code>mikann</code> followed by the enter key. Here is how Word looks like doing this:</p>
+</li>
+<li><code>sennsei</code> should result in "せんせい" or "先生"</li>
+<li><code>konnichiha</code> should result in "こんいちは"</li>
+<li><code>mikann</code> should result in "みかん" or "橘"</li>
+</ul>
+<p><img alt="Windows Japanese Word" src="../images/ime/windows-japanese-word.gif" /></p>
+<ul>
+<li>After typing some Japanese words, try to type space or enter key a few times to see if the composition works correctly.
+  <img alt="Japanese Composition" src="../images/ime/windows-japanese-composition.gif" /></li>
+</ul>
+<hr />
+<h2 id="windows-korean">[Windows] Korean</h2>
+<ul>
+<li>Add the Korean input method</li>
+<li>
+<p><code>Settings &gt; Time &amp; Language &gt; Region &amp; language &gt; Add a language &gt; Korean</code></p>
+</li>
+<li>
+<p>Focus VS Code and switch OS input method to Korean and choose Hangul:</p>
+</li>
+</ul>
+<p><img alt="Windows Korean statusbar" src="../images/ime/windows-korean-ime.png" /></p>
+<ul>
+<li>Type <code>gksrmf</code> and press space. Here is how Word looks like doing this (it should be "한글"):</li>
+</ul>
+<p><img alt="Windows Korean Word 1" src="../images/ime/windows-korean-word1.gif" /></p>
+<ul>
+<li>Type <code>dkssudgktpdy</code> in a new file. Here is how Word looks like doing this:</li>
+</ul>
+<p><img alt="Windows Korean Word 2" src="../images/ime/windows-korean-word2.gif" /></p>
+<ul>
+<li>Type <code>dks</code>, it should be read <code>안</code>. Now backspace should result in <code>아</code>, backspace again should result in <code>ㅇ</code></li>
+</ul>
+<hr />
+<h2 id="windows-vietnamese-with-unikey">[Windows] Vietnamese with UniKey</h2>
+<ul>
+<li>
+<p>Download and Run <a href="http://www.unikey.org/bdownload.php#uk">UniKey</a></p>
+</li>
+<li>
+<p>Click the button with a down arrow:</p>
+</li>
+</ul>
+<p><img alt="Windows Vietnamese UniKey Setup 1" src="../images/ime/windows-vietnamese-ime-1.png" /></p>
+<ul>
+<li>Get the following settings:</li>
+</ul>
+<p><img alt="Windows Vietnamese UniKey Setup 2" src="../images/ime/windows-vietnamese-ime-2.png" /></p>
+<ul>
+<li>Focus VS Code and click once UniKey's system tray entry (next to the date) to toggle on Vietnamese mode (get it to be a V):</li>
+</ul>
+<p><img alt="Windows Vietnamese UniKey StatusBar" src="../images/ime/windows-vietnamese-ime-3.png" /></p>
+<ul>
+<li>Type <code>Tooi</code> =&gt; it should transform to =&gt; Tôi. Here is how Word looks like doing this:</li>
+</ul>
+<p><img alt="Windows Vietnamese UniKey Word" src="../images/ime/windows-vietnamese-word.gif" /></p>
+<hr />
+<h2 id="windows-chinese">[Windows] Chinese</h2>
+<ul>
+<li>Add the Chinese (Simplified) input method</li>
+<li>
+<p><code>Settings &gt; Time &amp; Language &gt; Region &amp; language &gt; Add a language &gt; Chinese (Simplified)</code></p>
+</li>
+<li>
+<p>Focus VS Code and switch OS input method to Chinese and choose Chinese mode and make sure the input method's name is Microsoft Pinyin:</p>
+</li>
+</ul>
+<p><img alt="Windows Chinese Setup" src="../images/ime/windows-chinese-ime.png" /></p>
+<ul>
+<li>Type <code>.</code> or <code>,</code> in full width form. They should be typed in immediately. Here is how Word looks like doing this:</li>
+</ul>
+<p><img alt="Windows Chinese Word" src="../images/ime/windows-chinese-word.gif" /></p>
+<ul>
+<li>Type <code>ni</code> press <code>Space</code> and then <code>hao</code> and press <code>Space</code>. They should be typed in immediately. Here is how Word looks like doing this:</li>
+</ul>
+<p><img alt="Windows Chinese Word" src="../images/ime/windows-chinese2-word.gif" /></p>
+<ul>
+<li>
+<p>Type <code>hazni</code> press <code>Space</code>. It should result into <code>哈祝你</code> or <code>汉子</code> or <code>哈子你</code>. The result might differ due to different implementation of the algorithm the IME uses, just make sure it's the same as what you get in Notepad or whatever.</p>
+</li>
+<li>
+<p>Type <code>a</code> and press space key twice. The result should be <code>啊</code>(Please note it ends with a single space)。</p>
+</li>
+</ul>
+<p>--</p>
+<h2 id="windows-sogou-pinyin-chinese-input-method">[Windows] Sogou pinyin Chinese input method</h2>
+<ul>
+<li>
+<p>Install Sogou pinyin Chinese input method</p>
+</li>
+<li>
+<p>Download Sogou pinyin Chinese input method from <a href="http://pinyin.sogou.com/">this link</a></p>
+<p><img alt="download Sogou" src="../images/ime/sogou-install.png" /></p>
+</li>
+<li>
+<p>Double click downloaded install exe</p>
+<p><img alt="install exe" src="../images/ime/sogou-install2.png" /></p>
+</li>
+<li>
+<p>Click YES if UAC dialog show  </p>
+<p><img alt="accept uac" src="../images/ime/sogou-install3.png" /></p>
+</li>
+<li>
+<p>Click Install immediately in the install UI</p>
+<p><img alt="install immediately" src="../images/ime/sogou-install4.png" /></p>
+</li>
+<li>
+<p>Wait for the process complete, UNCHECK the "install the Sogou browser"  </p>
+<p><img alt="uncheck sogou browser" src="../images/ime/sogou-install5.png" /></p>
+</li>
+<li>
+<p>Uncheck all options, click finish  </p>
+<p><img alt="uncheck all options" src="../images/ime/sogou-install6.png" /></p>
+</li>
+<li>
+<p>Focus VS Code and switch OS input method to Chinese and choose Chinese mode and make sure the input method's name is Sogou Pinyin:</p>
+</li>
+</ul>
+<p><img alt="sogou pinyin statusbar" src="../images/ime/sogou-statusbar.png" /></p>
+<ul>
+<li>Type <code>ni</code> press <code>Space</code> and then <code>hao</code> and press <code>Space</code>. They should be typed in immediately. Here is how Word looks like doing this: </li>
+</ul>
+<p><img alt="sogou word" src="../images/ime/sogou-word.gif" /></p>
+<ul>
+<li>It should result into <code>你好</code></li>
+</ul>
+<hr />
+<h2 id="mac-zhuyin-input-method-chinese">[Mac] Zhuyin Input Method (Chinese)</h2>
+<ul>
+<li><code>System Preferences &gt; Keyboard &gt; Input Sources &gt; Add &gt; Chinese, Tranditional &gt; Zhuyin</code></li>
+</ul>
+<p><img alt="mac Zhuyin setup 1" src="../images/ime/mac-zhuyin-setup1.png" /></p>
+<ul>
+<li>Focus VS Code and switch OS input method to Zhuyin (press Command + space)</li>
+</ul>
+<p><img alt="mac Zhuyin setup 2" src="../images/ime/mac-zhuyin-setup2.png" /></p>
+<ul>
+<li>Type <code>su3cl3</code> and press Enter. Here is how World looks like doing this (It should be "你好")</li>
+</ul>
+<p><img alt="mac Zhuyin Word" src="../images/ime/mac-zhuyin-word.gif" /></p>
+<hr />
+<h2 id="mac-the-hold-input-method">[Mac] The hold input method</h2>
+<ul>
+<li>Long press <code>e</code></li>
+<li>A pop-up should appear</li>
+<li>Choose a different variant, like an <code>e</code> with an accute accent</li>
+</ul>
+<hr />
+<h2 id="mac-the-emoji-inserter">[Mac] The emoji inserter</h2>
+<hr />
+<h2 id="linux-japanese">[Linux] Japanese</h2>
+<p>Use <a href="https://wiki.archlinux.org/index.php/Mozc">mozc</a>.</p>
+<h3 id="ubuntu">Ubuntu</h3>
+<p>Follow <a href="https://moritzmolch.com/1453">this guide</a>, from the <strong>Mozc</strong> section:</p>
+<ul>
+<li><code>sudo apt-get install ibus-mozc</code></li>
+<li><code>System Settings &gt; Text Entry</code>, add <code>Japanese (Mozc)(IBus)</code> to the list</li>
+<li>In the system menu bar, switch the input language to Mozc and the input mode to Hiragana</li>
+</ul>
+<h3 id="elementary-os">Elementary OS</h3>
+<p><a href="http://elementaryos.stackexchange.com/questions/271/how-can-i-enable-japanese-input">http://elementaryos.stackexchange.com/questions/271/how-can-i-enable-japanese-input</a></p>
+<h3 id="test">Test</h3>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sennsei</code></td>
+<td>"せんせい" or "先生"</td>
+</tr>
+<tr>
+<td><code>konnichiha</code></td>
+<td>"こんいちは"</td>
+</tr>
+<tr>
+<td><code>mikann</code></td>
+<td>"みかん" or "橘"</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linux-korean">[Linux] Korean</h2>
+<h3 id="ubuntu_1">Ubuntu</h3>
+<ul>
+<li>Follow <a href="http://ubuntuhandbook.org/index.php/2016/07/2-best-chinese-pinyin-im-ubuntu-16-04/">this guide</a> to install and setup fcitx.</li>
+</ul>
+<h3 id="elementary-os_1">Elementary OS</h3>
+<ul>
+<li>Install fcitx: Follow instructions <a href="https://www.reddit.com/r/elementaryos/comments/33cfha/multiple_inputs_under_freya_chinese_case_pinyin/">here</a></li>
+<li>Install Korean-Hangul support: <code>sudo apt-get install fcitx-hangul</code></li>
+</ul>
+<h3 id="test_1">Test</h3>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gksrmf</code></td>
+<td>"한글"</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linux-chinese-pinyin">[Linux] Chinese (Pinyin)</h2>
+<h3 id="ubuntu_2">Ubuntu</h3>
+<ul>
+<li>Follow <a href="http://ubuntuhandbook.org/index.php/2016/07/2-best-chinese-pinyin-im-ubuntu-16-04/">this guide</a> to install and setup fcitx.</li>
+</ul>
+<h3 id="elementary-os_2">Elementary OS</h3>
+<ul>
+<li>Install fcitx: Follow instructions <a href="https://www.reddit.com/r/elementaryos/comments/33cfha/multiple_inputs_under_freya_chinese_case_pinyin/">here</a></li>
+<li>Select Google Pinyin</li>
+</ul>
+<h3 id="test_2">Test</h3>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ni</code> <kbd>Space</kbd> <code>hao</code> <kbd>Space</kbd></td>
+<td>"你好"</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linux-chinese-sogou-pinyin">[Linux] Chinese (Sogou Pinyin)</h2>
+<ul>
+<li>Install fcitx as above</li>
+<li>Install the deb images (32/64 bit) from <a href="http://pinyin.sogou.com/linux/?r=pinyin">http://pinyin.sogou.com/linux/?r=pinyin</a></li>
+</ul>
+<h3 id="test_3">Test</h3>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ni</code> <kbd>Space</kbd> <code>hao</code> <kbd>Space</kbd></td>
+<td>"你好"</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Content created from:
+* <a href="https://github.com/Microsoft/vscode/issues/1168">#1168</a>
+* <a href="https://github.com/Microsoft/vscode/issues/2250">#2250</a>
+* <a href="https://github.com/Microsoft/vscode/issues/2374">#2374</a>
+* <a href="https://github.com/Microsoft/vscode/issues/5615">#5615</a>
+* <a href="https://github.com/Microsoft/vscode/issues/7997">#7997</a>
+* <a href="https://github.com/Microsoft/vscode/issues/10937">#10937</a></p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../Feature-Areas/" title="Feature Areas" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Feature Areas
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../Insiders-Release-Notes/" title="Insiders Release Notes" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Insiders Release Notes
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

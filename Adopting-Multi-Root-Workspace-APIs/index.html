@@ -1,0 +1,1747 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Personal fork of Visual Studio Code Wiki">
+      
+      
+        <link rel="canonical" href="https://go-language-server.github.io/vscode-wiki/Adopting-Multi-Root-Workspace-APIs/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>Adopting Multi Root Workspace APIs - Visual Studio Code Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.1b62728e.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-89201129-1", "https://go-language-server.github.io/vscode-wiki/")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#synopsis" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://go-language-server.github.io/vscode-wiki/" title="Visual Studio Code Wiki" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Visual Studio Code Wiki
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Adopting Multi Root Workspace APIs
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/go-language-server/vscode-wiki/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    zchee/golang-wiki
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://go-language-server.github.io/vscode-wiki/" title="Visual Studio Code Wiki" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Visual Studio Code Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/go-language-server/vscode-wiki/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    zchee/golang-wiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Home/" title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Project Management
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Project Management
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Roadmap/" title="Roadmap" class="md-nav__link">
+      Roadmap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Iteration-Plans/" title="Iteration Plans" class="md-nav__link">
+      Iteration Plans
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Development-Process/" title="Development Process" class="md-nav__link">
+      Development Process
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4">
+    
+    <label class="md-nav__link" for="nav-2-4">
+      Issue Tracking
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-4">
+        Issue Tracking
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Issue-Tracking/" title="Issue Tracking" class="md-nav__link">
+      Issue Tracking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Issues-Triaging/" title="Issues Triaging" class="md-nav__link">
+      Issues Triaging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Performance-Issues/" title="Performance Issues" class="md-nav__link">
+      Performance Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Community-Issue-Tracking/" title="Community Issue Tracking" class="md-nav__link">
+      Community Issue Tracking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Keybinding-Issues/" title="Keybinding Issues" class="md-nav__link">
+      Keybinding Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Native-Crash-Issues/" title="Native Crash Issues" class="md-nav__link">
+      Native Crash Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Search-Issues/" title="Search Issues" class="md-nav__link">
+      Search Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Issue-Grooming/" title="Issue Grooming" class="md-nav__link">
+      Issue Grooming
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Build-Master/" title="Build Master" class="md-nav__link">
+      Build Master
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Release-Process/" title="Release Process" class="md-nav__link">
+      Release Process
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Running-the-Endgame/" title="Running the Endgame" class="md-nav__link">
+      Running the Endgame
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Related-Projects/" title="Related Projects" class="md-nav__link">
+      Related Projects
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Contributing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Contributing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../How-to-Contribute/" title="How to Contribute" class="md-nav__link">
+      How to Contribute
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Submitting-Bugs-and-Suggestions/" title="Submitting Bugs and Suggestions" class="md-nav__link">
+      Submitting Bugs and Suggestions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Feedback-Channels/" title="Feedback Channels" class="md-nav__link">
+      Feedback Channels
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Source-Code-Organization/" title="Source Code Organization" class="md-nav__link">
+      Source Code Organization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Coding-Guidelines/" title="Coding Guidelines" class="md-nav__link">
+      Coding Guidelines
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Smoke-Test/" title="Smoke Test" class="md-nav__link">
+      Smoke Test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Contributor-License-Agreement/" title="Contributor License Agreement" class="md-nav__link">
+      Contributor License Agreement
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/Microsoft/vscode/wiki/Requested-Extensions" title="Requested Extensions" class="md-nav__link">
+      Requested Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Extension-API-guidelines/" title="Extension API Guidelines" class="md-nav__link">
+      Extension API Guidelines
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Documentation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Documentation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://code.visualstudio.com/docs/extensions/overview" title="Extensions" class="md-nav__link">
+      Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://code.visualstudio.com/docs/extensionAPI/overview" title="API" class="md-nav__link">
+      API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://code.visualstudio.com/docs" title="Visual Studio Code" class="md-nav__link">
+      Visual Studio Code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/microsoft/vscode-docs" title="Document Repository" class="md-nav__link">
+      Document Repository
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/Microsoft/vscode/wiki/Adopting-Multi-Root-Workspace-APIs" title="Multi Root Workspace API" class="md-nav__link">
+      Multi Root Workspace API
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Adopting Multi Root Workspace APIs
+      </label>
+    
+    <a href="./" title="Adopting Multi Root Workspace APIs" class="md-nav__link md-nav__link--active">
+      Adopting Multi Root Workspace APIs
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#synopsis" class="md-nav__link">
+    Synopsis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-i-need-to-do-anything" class="md-nav__link">
+    Do I need to do anything?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eliminating-rootpath" class="md-nav__link">
+    Eliminating rootPath
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-helpful-api" class="md-nav__link">
+    New helpful API
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    Settings
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settings-configuration" class="md-nav__link">
+    Settings Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#settings-api" class="md-nav__link">
+    Settings API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perspectives" class="md-nav__link">
+    Perspectives
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-time-diagnostics" class="md-nav__link">
+    Run time Diagnostics
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#language-client-language-server" class="md-nav__link">
+    Language Client / Language Server
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-language-server-or-server-per-folder" class="md-nav__link">
+    Single language server or server per folder?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#language-settings" class="md-nav__link">
+    Language settings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#samples" class="md-nav__link">
+    Samples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-tests" class="md-nav__link">
+    Writing Tests
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Code-Editor-Roadmap/" title="Code Editor Roadmap" class="md-nav__link">
+      Code Editor Roadmap
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Color-customization-color-id-changes/" title="Color customization color id changes" class="md-nav__link">
+      Color customization color id changes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Cross-Compiling-for-Debian-Based-Linux/" title="Cross Compiling for Debian Based Linux" class="md-nav__link">
+      Cross Compiling for Debian Based Linux
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../December-Pre-Release/" title="December Pre Release" class="md-nav__link">
+      December Pre Release
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../December-Test-Plan/" title="December Test Plan" class="md-nav__link">
+      December Test Plan
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Design-Goals/" title="Design Goals" class="md-nav__link">
+      Design Goals
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Differences-between-the-repository-and-Visual-Studio-Code/" title="Differences between the repository and Visual Studio Code" class="md-nav__link">
+      Differences between the repository and Visual Studio Code
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Editor-decorations-&-colors/" title="Editor decorations & colors" class="md-nav__link">
+      Editor decorations & colors
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Explain-extension-causes-high-cpu-load/" title="Explain extension causes high cpu load" class="md-nav__link">
+      Explain extension causes high cpu load
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Extension-API-process/" title="Extension API process" class="md-nav__link">
+      Extension API process
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Feature-Areas/" title="Feature Areas" class="md-nav__link">
+      Feature Areas
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../IME-Test/" title="IME Test" class="md-nav__link">
+      IME Test
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Insiders-Release-Notes/" title="Insiders Release Notes" class="md-nav__link">
+      Insiders Release Notes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Known-issues/" title="Known issues" class="md-nav__link">
+      Known issues
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Lists-And-Trees/" title="Lists And Trees" class="md-nav__link">
+      Lists And Trees
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../November-Plan/" title="November Plan" class="md-nav__link">
+      November Plan
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Performance-Issues-(old)/" title="Performance Issues (old)" class="md-nav__link">
+      Performance Issues (old)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Pointer-Device--&-Touch-support/" title="Pointer Device & Touch support" class="md-nav__link">
+      Pointer Device  & Touch support
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Publish-vscode-types/" title="Publish vscode types" class="md-nav__link">
+      Publish vscode types
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Removing-Insiders/" title="Removing Insiders" class="md-nav__link">
+      Removing Insiders
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Roadmap-2017/" title="Roadmap 2017" class="md-nav__link">
+      Roadmap 2017
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Roadmap-2018/" title="Roadmap 2018" class="md-nav__link">
+      Roadmap 2018
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Roadmap-2019/" title="Roadmap 2019" class="md-nav__link">
+      Roadmap 2019
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Semantic-Highlighting-Overview/" title="Semantic Highlighting Overview" class="md-nav__link">
+      Semantic Highlighting Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Setting-Descriptions/" title="Setting Descriptions" class="md-nav__link">
+      Setting Descriptions
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Terminal-Issues/" title="Terminal Issues" class="md-nav__link">
+      Terminal Issues
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../UX/" title="UX" class="md-nav__link">
+      UX
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Working-with-xterm.js/" title="Working with xterm.js" class="md-nav__link">
+      Working with xterm.js
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../[WIP]-Code-Editor-Design-Doc/" title="[WIP] Code Editor Design Doc" class="md-nav__link">
+      [WIP] Code Editor Design Doc
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../[WIP]-Design-Checklist/" title="[WIP] Design Checklist" class="md-nav__link">
+      [WIP] Design Checklist
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../[WIP]-Design-Principles/" title="[WIP] Design Principles" class="md-nav__link">
+      [WIP] Design Principles
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#synopsis" class="md-nav__link">
+    Synopsis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-i-need-to-do-anything" class="md-nav__link">
+    Do I need to do anything?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eliminating-rootpath" class="md-nav__link">
+    Eliminating rootPath
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-helpful-api" class="md-nav__link">
+    New helpful API
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    Settings
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settings-configuration" class="md-nav__link">
+    Settings Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#settings-api" class="md-nav__link">
+    Settings API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perspectives" class="md-nav__link">
+    Perspectives
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-time-diagnostics" class="md-nav__link">
+    Run time Diagnostics
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#language-client-language-server" class="md-nav__link">
+    Language Client / Language Server
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-language-server-or-server-per-folder" class="md-nav__link">
+    Single language server or server per folder?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#language-settings" class="md-nav__link">
+    Language settings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#samples" class="md-nav__link">
+    Samples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-tests" class="md-nav__link">
+    Writing Tests
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/go-language-server/vscode-wiki/edit/master/docs/Adopting-Multi-Root-Workspace-APIs.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>Adopting Multi Root Workspace APIs</h1>
+                
+                <blockquote>
+<p><strong>Request:</strong> if you have prepared your extension for Multi-root Workspaces we would love you to add <code>multi-root ready</code> to your <code>package.json</code> i.e. <code>"keywords": ["multi-root ready"]</code>.  If you upgrade to <code>VSCE 1.32.0</code> this can be added to any existing keywords and will not be counted against the maximum of 5 allowed keywords.</p>
+</blockquote>
+<h2 id="synopsis">Synopsis</h2>
+<p>This wiki page explains the impact of the new multi-root-workspace feature on extensions. You will learn the concepts, new APIs and understand if and how to make your extension ready for multi-root-workspace support.</p>
+<p>A multi-root workspace is a new way how to work with VS Code. At its core, it allows to open multiple folders in the same instance from any location that is accessible on disk. All parts of the VS Code user interface adapt to the number of folders opened, e.g. the file explorer will show all folders in a single tree and the full text search will search across all folders. It is in the best interest for the users that extensions also adapt to supporting multiple folders.</p>
+<p><img alt="explorer" src="https://user-images.githubusercontent.com/900690/30064942-9dc2e608-9253-11e7-9f01-5b18f3e90065.png" /></p>
+<p>There are numerous ways how to create a multi-root workspace. The simplest one is to just open multiple folders from the command line: </p>
+<div class="highlight"><pre><span></span>code-insiders &lt;folder1&gt; &lt;folder2&gt;...
+</pre></div>
+
+<p>All workspace metadata is stored in a simple JSON file that can be saved and shared (<code>File | Save Workspace As...</code>) with others:</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;folders&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;some-path&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;some-other-path&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;...any settings...&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>In its most simple form a VS Code workspace is just a collection of folders (called <code>WorkspaceFolder</code> in the API) and associated settings that should apply whenever the workspace is opened. Each <code>WorkspaceFolder</code> can have additional metadata associated (for example a <code>name</code> property).</p>
+<p>This guide will help you as extension author to make your extension ready for multi-root workspaces. It touches on three major pieces (basics, settings, language client/server) and is joined by samples from our <a href="https://github.com/Microsoft/vscode-extension-samples">samples repository</a>. </p>
+<h2 id="do-i-need-to-do-anything">Do I need to do anything?</h2>
+<p>Here is a simple check list:
+* If your extension is making use of the (now deprecated) <code>workspace.rootPath</code> property to work on the currently opened folder, then you are affected. See the section 'Eliminating workspace.rootPath below'.
+* If your extension contributes settings then you should review whether some of the settings can be applied on a resource (= file location) level instead of being global. Resource settings are more powerful because a user can choose to configure settings differently per workspace folder. Similarly, if you do not contribute settings but you modify settings programmatically, then you should review that you modify the settings using the proper scope. See the 'Settings' section below.
+* If you are implementing a language server then you are affected since up to now a language server only had to handle a single folder. In the new multi-folder setup, a language server should be able to handle multiple folders. See the section 'Language Client/Language Server' below.
+* If you are implementing a debug adapter then you are most likely not affected because a debug adapter cannot access the extension APIs (like <code>workspace.rootPath</code>) and debug configuration variables like <code>${workspaceFolder}</code> (or the deprecated <code>${workspaceRoot}</code>) are already resolved into full paths before they are passed into the debug adapter.</p>
+<h2 id="eliminating-rootpath">Eliminating <code>rootPath</code></h2>
+<p>The basic APIs to work with multi root workspaces are:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>workspace.workspaceFolders</code></td>
+<td>access to all <code>WorkspaceFolder</code> (can be <code>undefined</code> when no workspace is opened!)</td>
+</tr>
+<tr>
+<td><code>workspace.onDidChangeWorkspaceFolders</code></td>
+<td>be notified when <code>WorkspaceFolder</code> are added or removed</td>
+</tr>
+<tr>
+<td><code>workspace.getWorkspaceFolder(uri)</code></td>
+<td>get the <code>WorkspaceFolder</code> for a given resource (can be <code>undefined</code> when resource is not part of any workspace folder!)</td>
+</tr>
+</tbody>
+</table>
+<p>Your extension should be capable of working with any number of <code>WorkspaceFolder</code>, including 0, 1 or many folders. The <code>WorkspaceFoldersChangeEvent</code> carries information about the added or removed <code>WorkspaceFolder</code>. To find out to which <code>WorkspaceFolder</code> a given resource belongs to, use the <code>workspace.getWorkspaceFolder(uri)</code> method.</p>
+<p><strong>Note</strong>: Using <code>workspace.getWorkspaceFolder(uri)</code> with the URI of a <code>WorkspaceFolder</code> will return that instance of the <code>WorkspaceFolder</code>. </p>
+<p>Each <code>WorkspaceFolder</code> provides access to some metadata:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uri</code></td>
+<td>the associated uri for this workspace folder. The Uri-type was intentionally chosen such that future releases of the editor can support workspace folders that are not stored on the local disk, e.g. <code>ftp://server/workspaces/foo</code>.</td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td>the 0-based index of the folder as configured by the user</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>the name of the folder (defaults to the folder name)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note 1:</strong> a user is free to configure folders for a workspace that are overlapping. E.g. a workspace can consist of a parent folder as well as any of its children. It is up to the extension to be clever here and avoid duplicate work. For example, a task that scans all files of a folder should not duplicate the work by scanning again for a child folder if any.</p>
+<p><strong>Note 2:</strong> a workspace folder might use a <code>uri</code> which does <em>not</em> resolve to a file on disk. So, it must not always be a <code>file</code>-uri, but VSCode will soon support workspace folders from remote locations.</p>
+<p>The <a href="https://github.com/Microsoft/vscode-extension-samples/tree/master/basic-multi-root-sample"><code>basic-multi-root-sample</code></a> extension is demonstrating the use of this API by showing the workspace folder of the currently opened file in the left hand side of the status bar.</p>
+<p><img alt="Show the folder of the active file" src="https://raw.githubusercontent.com/Microsoft/vscode-extension-samples/master/basic-multi-root-sample/preview.gif" /></p>
+<h3 id="new-helpful-api">New helpful API</h3>
+<p>In order to make it easier to work with multiple-roots from your extension, we added some new API. For example, if you need to ask the user for a specific <code>WorkspaceFolder</code>, you can use the new <code>showWorkspaceFolderPick</code> method that will open a picker and returns the result. This method will return <code>undefined</code> in case the user did not pick any folder or in case no workspace is opened. </p>
+<p><img alt="Workspace Folder Picker" src="https://github.com/Microsoft/vscode-docs/raw/vnext/release-notes/images/1_17/picker.png" /></p>
+<p>In addition, we introduced the <code>RelativePattern</code> type and support it in the API where we ask for glob patterns to match on file paths. There maybe scenarios where you want to restrict the glob matching on a specific <code>WorkspaceFolder</code> and <code>RelativePattern</code> allows this by providing a <code>base</code> for the pattern to match against. You can use <code>RelativePattern</code> in:
+* <code>workspace.createFileSystemWatcher(pattern)</code>
+* <code>workspace.findFiles(include, exclude))</code>
+* <code>DocumentFilter#pattern</code></p>
+<p>The type is a class as follows:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * A relative pattern is a helper to construct glob patterns that are matched</span>
+<span class="cm"> * relatively to a base path. The base path can either be an absolute file path</span>
+<span class="cm"> * or a [workspace folder](#WorkspaceFolder).</span>
+<span class="cm"> */</span>
+<span class="kr">class</span> <span class="nx">RelativePattern</span> <span class="p">{</span>
+
+  <span class="cm">/**</span>
+<span class="cm">   * A base file path to which this pattern will be matched against relatively.</span>
+<span class="cm">   */</span>
+  <span class="nx">base</span>: <span class="kt">string</span><span class="p">;</span>
+
+  <span class="cm">/**</span>
+<span class="cm">   * A file glob pattern like `*.{ts,js}` that will be matched on file paths</span>
+<span class="cm">   * relative to the base path.</span>
+<span class="cm">   *</span>
+<span class="cm">   * Example: Given a base of `/home/work/folder` and a file path of `/home/work/folder/index.js`,</span>
+<span class="cm">   * the file glob pattern will match on `index.js`.</span>
+<span class="cm">   */</span>
+  <span class="nx">pattern</span>: <span class="kt">string</span><span class="p">;</span>
+
+  <span class="cm">/**</span>
+<span class="cm">   * Creates a new relative pattern object with a base path and pattern to match. This pattern</span>
+<span class="cm">   * will be matched on file paths relative to the base path.</span>
+<span class="cm">   *</span>
+<span class="cm">   * @param base A base file path to which this pattern will be matched against relatively.</span>
+<span class="cm">   * @param pattern A file glob pattern like `*.{ts,js}` that will be matched on file paths</span>
+<span class="cm">   * relative to the base path.</span>
+<span class="cm">   */</span>
+  <span class="kr">constructor</span><span class="p">(</span><span class="nx">base</span>: <span class="kt">WorkspaceFolder</span> <span class="o">|</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">pattern</span>: <span class="kt">string</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>You can create a relative pattern via the following call:</p>
+<div class="highlight"><pre><span></span><span class="c1">// Construct a relative pattern for the first root folder</span>
+<span class="kr">const</span> <span class="nx">relativePattern</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">vscode</span><span class="p">.</span><span class="nx">RelativePattern</span><span class="p">(</span><span class="nx">vscode</span><span class="p">.</span><span class="nx">workspace</span><span class="p">.</span><span class="nx">workspaceFolders</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;*.ts&#39;</span><span class="p">);</span>
+</pre></div>
+
+<h2 id="settings">Settings</h2>
+<p>With the introduction of multi-root workspaces, we also revisited how settings can apply. We differentiate between where a setting is persisted and how a setting applies.</p>
+<p>Settings can be stored in various locations:</p>
+<table>
+<thead>
+<tr>
+<th>Location</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User Data</td>
+<td>Global <code>settings.json</code> file in the user data directory that applies to any VS Code instance</td>
+</tr>
+<tr>
+<td>Workspace File (<em>new</em>)</td>
+<td>Settings stored within the <code>.code-workspace</code> file of a multi-root workspace which apply whenever the workspace is opened</td>
+</tr>
+<tr>
+<td>Workspace Folder</td>
+<td>Settings stored inside a <code>.vscode</code> folder of a workspace folder which apply depending on opening the folder or a workspace with that folder (see below).</td>
+</tr>
+</tbody>
+</table>
+<p>Let's have a closer look at <strong>Workspace Folder</strong> settings that are stored within the <code>.vscode</code> folder: If you are opening just that folder in VS Code, all the settings of this folder apply to VS Code as before. However, once you make this folder part of a multi-root workspace, the situation is different. We no longer support all settings in this setup simply because you could have multiple folders configured in the workspace, each having settings that could potentially conflict.</p>
+<p>To solve this, we distinguish between scopes a setting can have. You as extension author have to make the decision which scope applies for your settings: </p>
+<table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>window</code></td>
+<td>the setting is applied to the entire VS Code instance</td>
+</tr>
+<tr>
+<td><code>resource</code></td>
+<td>the setting is applied depending on an active resource</td>
+</tr>
+</tbody>
+</table>
+<p>By default, all settings have the <code>window</code> scope, however we encourage you to support settings on the <code>resource</code> scope. Settings that apply on the window level are not supported once they are defined within a workspace folder and as soon as the user entered a multi-root workspace. Settings that apply on a resource level however are supported and as such, each workspace folder can have different values for these settings. </p>
+<p><strong>Note:</strong> When a setting is defined as a <code>resource</code> scoped setting, then you have to use the new configuration API that fetches the setting that applies to a resource (see the Settings API section below).</p>
+<h3 id="settings-configuration">Settings Configuration</h3>
+<p>To declare a setting scope, simply define the scope as part of your setting from the <code>package.json</code> file. The example below is copied from the <a href="https://github.com/Microsoft/vscode-extension-samples/blob/master/configuration-sample/package.json">Configuration Sample</a> extension:</p>
+<div class="highlight"><pre><span></span><span class="s2">&quot;contributes&quot;</span><span class="err">:</span> <span class="p">{</span>
+  <span class="nt">&quot;configuration&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Configuration Samples&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;conf.view.showOnWindowOpen&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;explorer&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;search&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;scm&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;debug&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;extensions&quot;</span>
+          <span class="p">],</span>
+          <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;explorer&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Window configuration: View to show always when a window opens&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;window&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;conf.resource.insertEmptyLastLine&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="p">{},</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Resource configurtion: Configure files using glob patterns to have an empty last line always&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;resource&quot;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="settings-api">Settings API</h3>
+<p>The configuration example above defines a setting scoped to a resource. To fetch its value you use the <code>workspace.getConfiguration()</code> API and pass the URI of the resource as second parameter. You can see <a href="https://github.com/Microsoft/vscode-extension-samples/blob/master/configuration-sample/src/extension.ts">Example 3</a> how the setting is used in the basic-multi-root sample.</p>
+<p>Under the hood, resource settings are resolved with a simple logic: We try to find a <code>WorkspaceFolder</code> for the resource that is passed into the <code>getConfiguration</code> API. If such a folder exists and that folder defines the setting, it will be returned. Otherwise the normal logic applies for finding the setting on a parent level: it could be defined within the workspace file or on the user level.</p>
+<p><strong>Note:</strong> You do not have to be aware if the user has opened a workspace or not when using the <code>getConfiguration</code> API with resource scope. Just make sure to always pass the resource scope URI around and we will do the resolution of the setting based on the user's setup.</p>
+<h3 id="perspectives">Perspectives</h3>
+<p>An extension author, you should have following two perspectives while defining a setting</p>
+<ol>
+<li>
+<p><strong>End User:</strong> Given a setting, an end user should know where he/she can customise this setting. By defining a setting as <code>resource</code> or <code>window</code> scoped, user can be able customise it at right targets. It means, User can open settings and can customise a window (<code>window.zoomLevel</code>) or resource (<code>editor.wordWrap</code>) setting  in User/Workspace Settings. But when user lands into Folder Settings, user can only customise resource settings (<code>editor.wordWrap</code>). VS Code will use the setting's classification information to provide right proposals in intelli-sense and will warn user if customising <code>window</code> settings in Folder settings.</p>
+</li>
+<li>
+<p><strong>Extension author:</strong> Extension author's main purpose is to define a setting and read its value and apply it. As mentioned before now, there is a new target <code>Folder Settings</code> where a resource scoped setting can only be customisable. So extension author should be knowing if a setting is associated to a resource or not and thereby, classify the setting. If it is a resource setting, ask for the value of the setting by passing the resource for which the value has to be applied. Otherwise you can just ask for the value without passing any resource. API will give you back the value user customised for this setting.</p>
+</li>
+</ol>
+<h3 id="run-time-diagnostics">Run time Diagnostics</h3>
+<p>While extension development, we provide some run time assistance by logging warnings when we detect the extension is accessing configuration not in an expected way. Following are the diagnostics we show and actions to be taken when you see them.</p>
+<blockquote>
+<p>[ext.name]: Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for '${key}', provide the URI of a resource or 'null' for any resource.</p>
+</blockquote>
+<p>It is suggested to pass in a resource when you are accessing a resource scoped configuration. In case of getting the value for any resource, pass <code>null</code> for resource.</p>
+<blockquote>
+<p>[ext.name]: Accessing a window scoped configuration for a resource is not expected. To associate '${key}' to a resource, define its scope to 'resource' in configuration contributions in 'package.json'.</p>
+</blockquote>
+<ul>
+<li>
+<p>If they are not resource scoped settings, you do not need to pass in a resource while accessing the setting.</p>
+</li>
+<li>
+<p>If they are resource scoped settings, you have to define them as Resource scoped while registering in the package.json</p>
+</li>
+</ul>
+<p>Refer to <a href="https://github.com/Microsoft/vscode-extension-samples/tree/master/configuration-sample">Configuration Sample</a> extension for more information.</p>
+<h2 id="language-client-language-server">Language Client / Language Server</h2>
+<p>Since language servers usually act on a workspace they are also affected by the introduction of multi-root workspaces. A language server extension needs to check for the following items and adopt its code accordingly:</p>
+<ul>
+<li>
+<p>if the server accesses the <code>rootPath</code> or <code>rootURI</code> property of the <code>InitializeParams</code> passed in the <a href="https://github.com/Microsoft/language-server-protocol/blob/master/protocol.md#initialize"><code>initialize</code> request</a> then the language server must instead use the property <code>workspaceFolders</code>. Since workspace folders can come and go dynamically the server also need to register for <code>workspace/didChangeWorkspaceFolders</code> notifications. The documentation can be found <a href="https://github.com/Microsoft/vscode-languageserver-node/blob/master/protocol/src/protocol.workspaceFolders.ts">here</a>.</p>
+</li>
+<li>
+<p>if the server is using configuration settings the author also has to review the scope of the settings (see the <a href="#settings">Settings section</a> above). For a language server 'resource' scope is typically preferred, since it enables a user to configure that language settings on a per folder basis. In addition, the server has to change the way settings are accessed (see the <a href="#language-settings">Language Settings section</a> below).</p>
+</li>
+</ul>
+<h3 id="single-language-server-or-server-per-folder">Single language server or server per folder?</h3>
+<p>The first decision the author of a language server must make is whether a single server can handle all the folders in a multi-root folder setup or whether you want to run a server per root folder. Using a single server is the recommended way. Sharing a single server is more resource friendly than running multiple servers. </p>
+<p>Language servers that operate on a single file like a CSS or JSON file or linters that validate a single file at a time can easily handle multiple folders. We have already migrated the HTML, JSON, CSS language servers and the 'eslint' and 'tslint' Language servers. We have implemented them all as a single language server. The <a href="https://github.com/Microsoft/vscode-extension-samples/tree/master/lsp-sample">lsp-sample example</a> demonstrates the use of the new protocol workspace folder and configuration protocol. We recommend that you also review the corresponding extensions when migrating your server. </p>
+<p>Language servers that operate on multiple files with interdependencies can be different and you need to evaluate whether you want to start a server per workspace folder to isolate folders from each other. We have migrated the TypeScript/JavaScript language server and we were able to use a single server for multiple folders. We added support to this to the <code>vscode-languageclient</code> library and the <a href="https://github.com/Microsoft/vscode-extension-samples/tree/master/lsp-multi-server-sample">lsp-multi-server-sample</a> example demonstrates the use of a server per folder. </p>
+<h3 id="language-settings">Language settings</h3>
+<p>In the current version of the language server protocol the client pushes settings to the server. With the introduction of a resource scope this is not possible anymore since the actual settings values can depend on a resource. We introduce protocol which allow servers to fetch settings from a client comparable to the <code>getConfiguration</code> API in the extension host. The protocol addition is documented <a href="https://github.com/Microsoft/vscode-languageserver-node/blob/master/protocol/src/protocol.configuration.ts">here</a>. The bundled CSS or HTML language extensions illustrate this approach. </p>
+<p>A setting that supports file paths relative to a workspace needs special treatment. In the single folder case the language server process is started in the root folder of the workspace. A relative path can then be resolved easily since the server's home directory corresponds to the workspace root. In the multi-root folder setup this is no longer the case and when the setting is defined as a resource scoped setting, then the path needs to be resolved per root folder. One approach that has worked well for us, is to resolve the relative file path of a setting on the client using the new settings API. In this way the server only sees absolute paths. An example for this can be found in <a href="https://github.com/Microsoft/vscode-tslint/blob/2a9b46d57489b180f3fc0ad0acc15c3071541acf/tslint/extension.ts#L199">vscode-tslint</a>. It uses the <code>vscode-languageclient</code> middleware to transform the relative file paths.</p>
+<h2 id="samples">Samples</h2>
+<p>Sample|Description
+------|-----------|
+<strong><a href="https://github.com/Microsoft/vscode-extension-samples/tree/master/basic-multi-root-sample">Basic multi root</a></strong>|Illustrates the <code>WorkspaceFolder</code> API and how to work with a resource scoped configuration setting.|
+<strong><a href="https://github.com/Microsoft/vscode-extension-samples/tree/master/lsp-sample">Language Server Settings</a></strong>|Demonstrates how to handle configuration settings in a language server.|
+<strong><a href="https://github.com/Microsoft/vscode-extension-samples/tree/master/lsp-multi-server-sample">Multi Language Server</a></strong>|Starts a language server for each root folder in a workspace.|</p>
+<h2 id="writing-tests">Writing Tests</h2>
+<p>Today we do not provide any extension API to add or remove workspace folders. However, you are free to run your extension tests against a <code>code-workspace.json</code> file that can contain any number of workspace folders. Modifying this file programmatically will cause the workspace to change, however you have to account for the changes to the file bubbling through to VS Code for the update to happen (this can take up to a second). </p>
+<p>To start your extension tests on a workspace, open the <code>launch.json</code> and add the path to the file to the <code>args</code> property:</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Launch Extension&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;extensionHost&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="s2">&quot;launch&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;runtimeExecutable&quot;</span><span class="p">:</span> <span class="s2">&quot;${execPath}&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;${workspaceRoot}/test/test.code-workspace&quot;</span><span class="p">,</span> <span class="s2">&quot;--extensionDevelopmentPath=${workspaceRoot}&quot;</span> <span class="p">],</span>
+    <span class="nt">&quot;stopOnEntry&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;sourceMaps&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;outFiles&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;${workspaceRoot}/out/src/**/*.js&quot;</span> <span class="p">],</span>
+    <span class="nt">&quot;preLaunchTask&quot;</span><span class="p">:</span> <span class="s2">&quot;npm&quot;</span>
+<span class="p">}</span>
+</pre></div>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../Extension-API-guidelines/" title="Extension API Guidelines" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Extension API Guidelines
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../Code-Editor-Roadmap/" title="Code Editor Roadmap" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Code Editor Roadmap
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

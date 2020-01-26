@@ -1,0 +1,1874 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Personal fork of Visual Studio Code Wiki">
+      
+      
+        <link rel="canonical" href="https://go-language-server.github.io/vscode-wiki/Roadmap/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>Roadmap - Visual Studio Code Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.1b62728e.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-89201129-1", "https://go-language-server.github.io/vscode-wiki/")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#the-visual-studio-code-roadmap-2020" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://go-language-server.github.io/vscode-wiki/" title="Visual Studio Code Wiki" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Visual Studio Code Wiki
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Roadmap
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/go-language-server/vscode-wiki/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    zchee/golang-wiki
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://go-language-server.github.io/vscode-wiki/" title="Visual Studio Code Wiki" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Visual Studio Code Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/go-language-server/vscode-wiki/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    zchee/golang-wiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Home/" title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Project Management
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Project Management
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Roadmap
+      </label>
+    
+    <a href="./" title="Roadmap" class="md-nav__link md-nav__link--active">
+      Roadmap
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#themes" class="md-nav__link">
+    Themes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fundamentals" class="md-nav__link">
+    Fundamentals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workbench" class="md-nav__link">
+    Workbench
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    Settings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#search" class="md-nav__link">
+    Search
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ux" class="md-nav__link">
+    UX
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#editor" class="md-nav__link">
+    Editor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#languages" class="md-nav__link">
+    Languages
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typescript" class="md-nav__link">
+    TypeScript
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htmlcss" class="md-nav__link">
+    HTML/CSS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scm" class="md-nav__link">
+    SCM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debug" class="md-nav__link">
+    Debug
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    Testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install" class="md-nav__link">
+    Install
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminal" class="md-nav__link">
+    Terminal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extensions" class="md-nav__link">
+    Extensions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributions-to-vs-code-extensions" class="md-nav__link">
+    Contributions to VS Code Extensions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributions-to-underlying-components-and-technologies" class="md-nav__link">
+    Contributions to Underlying Components and Technologies
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#language-server-protocol" class="md-nav__link">
+    Language Server Protocol
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-adaptor-protocol" class="md-nav__link">
+    Debug Adaptor Protocol
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xtermjs" class="md-nav__link">
+    xterm.js
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#engineering" class="md-nav__link">
+    Engineering
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explorations" class="md-nav__link">
+    Explorations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    Documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#community-support" class="md-nav__link">
+    Community Support
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Iteration-Plans/" title="Iteration Plans" class="md-nav__link">
+      Iteration Plans
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Development-Process/" title="Development Process" class="md-nav__link">
+      Development Process
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4">
+    
+    <label class="md-nav__link" for="nav-2-4">
+      Issue Tracking
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-4">
+        Issue Tracking
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Issue-Tracking/" title="Issue Tracking" class="md-nav__link">
+      Issue Tracking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Issues-Triaging/" title="Issues Triaging" class="md-nav__link">
+      Issues Triaging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Performance-Issues/" title="Performance Issues" class="md-nav__link">
+      Performance Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Community-Issue-Tracking/" title="Community Issue Tracking" class="md-nav__link">
+      Community Issue Tracking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Keybinding-Issues/" title="Keybinding Issues" class="md-nav__link">
+      Keybinding Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Native-Crash-Issues/" title="Native Crash Issues" class="md-nav__link">
+      Native Crash Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Search-Issues/" title="Search Issues" class="md-nav__link">
+      Search Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Issue-Grooming/" title="Issue Grooming" class="md-nav__link">
+      Issue Grooming
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Build-Master/" title="Build Master" class="md-nav__link">
+      Build Master
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Release-Process/" title="Release Process" class="md-nav__link">
+      Release Process
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Running-the-Endgame/" title="Running the Endgame" class="md-nav__link">
+      Running the Endgame
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Related-Projects/" title="Related Projects" class="md-nav__link">
+      Related Projects
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Contributing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Contributing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../How-to-Contribute/" title="How to Contribute" class="md-nav__link">
+      How to Contribute
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Submitting-Bugs-and-Suggestions/" title="Submitting Bugs and Suggestions" class="md-nav__link">
+      Submitting Bugs and Suggestions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Feedback-Channels/" title="Feedback Channels" class="md-nav__link">
+      Feedback Channels
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Source-Code-Organization/" title="Source Code Organization" class="md-nav__link">
+      Source Code Organization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Coding-Guidelines/" title="Coding Guidelines" class="md-nav__link">
+      Coding Guidelines
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Smoke-Test/" title="Smoke Test" class="md-nav__link">
+      Smoke Test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Contributor-License-Agreement/" title="Contributor License Agreement" class="md-nav__link">
+      Contributor License Agreement
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/Microsoft/vscode/wiki/Requested-Extensions" title="Requested Extensions" class="md-nav__link">
+      Requested Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Extension-API-guidelines/" title="Extension API Guidelines" class="md-nav__link">
+      Extension API Guidelines
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Documentation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Documentation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://code.visualstudio.com/docs/extensions/overview" title="Extensions" class="md-nav__link">
+      Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://code.visualstudio.com/docs/extensionAPI/overview" title="API" class="md-nav__link">
+      API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://code.visualstudio.com/docs" title="Visual Studio Code" class="md-nav__link">
+      Visual Studio Code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/microsoft/vscode-docs" title="Document Repository" class="md-nav__link">
+      Document Repository
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/Microsoft/vscode/wiki/Adopting-Multi-Root-Workspace-APIs" title="Multi Root Workspace API" class="md-nav__link">
+      Multi Root Workspace API
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Adopting-Multi-Root-Workspace-APIs/" title="Adopting Multi Root Workspace APIs" class="md-nav__link">
+      Adopting Multi Root Workspace APIs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Code-Editor-Roadmap/" title="Code Editor Roadmap" class="md-nav__link">
+      Code Editor Roadmap
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Color-customization-color-id-changes/" title="Color customization color id changes" class="md-nav__link">
+      Color customization color id changes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Cross-Compiling-for-Debian-Based-Linux/" title="Cross Compiling for Debian Based Linux" class="md-nav__link">
+      Cross Compiling for Debian Based Linux
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../December-Pre-Release/" title="December Pre Release" class="md-nav__link">
+      December Pre Release
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../December-Test-Plan/" title="December Test Plan" class="md-nav__link">
+      December Test Plan
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Design-Goals/" title="Design Goals" class="md-nav__link">
+      Design Goals
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Differences-between-the-repository-and-Visual-Studio-Code/" title="Differences between the repository and Visual Studio Code" class="md-nav__link">
+      Differences between the repository and Visual Studio Code
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Editor-decorations-&-colors/" title="Editor decorations & colors" class="md-nav__link">
+      Editor decorations & colors
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Explain-extension-causes-high-cpu-load/" title="Explain extension causes high cpu load" class="md-nav__link">
+      Explain extension causes high cpu load
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Extension-API-process/" title="Extension API process" class="md-nav__link">
+      Extension API process
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Feature-Areas/" title="Feature Areas" class="md-nav__link">
+      Feature Areas
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../IME-Test/" title="IME Test" class="md-nav__link">
+      IME Test
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Insiders-Release-Notes/" title="Insiders Release Notes" class="md-nav__link">
+      Insiders Release Notes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Known-issues/" title="Known issues" class="md-nav__link">
+      Known issues
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Lists-And-Trees/" title="Lists And Trees" class="md-nav__link">
+      Lists And Trees
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../November-Plan/" title="November Plan" class="md-nav__link">
+      November Plan
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Performance-Issues-(old)/" title="Performance Issues (old)" class="md-nav__link">
+      Performance Issues (old)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Pointer-Device--&-Touch-support/" title="Pointer Device & Touch support" class="md-nav__link">
+      Pointer Device  & Touch support
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Publish-vscode-types/" title="Publish vscode types" class="md-nav__link">
+      Publish vscode types
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Removing-Insiders/" title="Removing Insiders" class="md-nav__link">
+      Removing Insiders
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Roadmap-2017/" title="Roadmap 2017" class="md-nav__link">
+      Roadmap 2017
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Roadmap-2018/" title="Roadmap 2018" class="md-nav__link">
+      Roadmap 2018
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Roadmap-2019/" title="Roadmap 2019" class="md-nav__link">
+      Roadmap 2019
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Semantic-Highlighting-Overview/" title="Semantic Highlighting Overview" class="md-nav__link">
+      Semantic Highlighting Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Setting-Descriptions/" title="Setting Descriptions" class="md-nav__link">
+      Setting Descriptions
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Terminal-Issues/" title="Terminal Issues" class="md-nav__link">
+      Terminal Issues
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../UX/" title="UX" class="md-nav__link">
+      UX
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Working-with-xterm.js/" title="Working with xterm.js" class="md-nav__link">
+      Working with xterm.js
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../[WIP]-Code-Editor-Design-Doc/" title="[WIP] Code Editor Design Doc" class="md-nav__link">
+      [WIP] Code Editor Design Doc
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../[WIP]-Design-Checklist/" title="[WIP] Design Checklist" class="md-nav__link">
+      [WIP] Design Checklist
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../[WIP]-Design-Principles/" title="[WIP] Design Principles" class="md-nav__link">
+      [WIP] Design Principles
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#themes" class="md-nav__link">
+    Themes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fundamentals" class="md-nav__link">
+    Fundamentals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workbench" class="md-nav__link">
+    Workbench
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    Settings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#search" class="md-nav__link">
+    Search
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ux" class="md-nav__link">
+    UX
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#editor" class="md-nav__link">
+    Editor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#languages" class="md-nav__link">
+    Languages
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typescript" class="md-nav__link">
+    TypeScript
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htmlcss" class="md-nav__link">
+    HTML/CSS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scm" class="md-nav__link">
+    SCM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debug" class="md-nav__link">
+    Debug
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    Testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install" class="md-nav__link">
+    Install
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminal" class="md-nav__link">
+    Terminal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extensions" class="md-nav__link">
+    Extensions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributions-to-vs-code-extensions" class="md-nav__link">
+    Contributions to VS Code Extensions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributions-to-underlying-components-and-technologies" class="md-nav__link">
+    Contributions to Underlying Components and Technologies
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#language-server-protocol" class="md-nav__link">
+    Language Server Protocol
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-adaptor-protocol" class="md-nav__link">
+    Debug Adaptor Protocol
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xtermjs" class="md-nav__link">
+    xterm.js
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#engineering" class="md-nav__link">
+    Engineering
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explorations" class="md-nav__link">
+    Explorations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    Documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#community-support" class="md-nav__link">
+    Community Support
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/go-language-server/vscode-wiki/edit/master/docs/Roadmap.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="the-visual-studio-code-roadmap-2020">The Visual Studio Code Roadmap 2020</h1>
+<p>As <a href="https://github.com/Microsoft/vscode/wiki/Roadmap-2019">2019</a> is coming to an end, now is the time to look towards the future. We typically look out 12-18 months and we establish topics we want to work on. We don't start with our roadmap on a blank sheet. We develop it based on our last roadmap, the findings we made over the course of the last year, and of course what we heard from you in issues, in face-to-face discussions, stack overflow, and twitter.</p>
+<p>When we execute on our roadmap, we keep learning and our assessment of some of the topics listed changes. As a result, we may add or drop topics as we go. In 12 months from now, we then come together to develop the next roadmap.</p>
+<p>We describe some initiatives as "investigations" or "explorations" which means our goal in the next few months is to better understand the problem and potential solutions before scheduling actual feature work. Once an investigation is done, we will update our plan, either deferring the initiative or committing to it.</p>
+<p>As always, we listen to your feedback and adapt our plans if needed. </p>
+<p>Legend of annotations:</p>
+<table>
+<thead>
+<tr>
+<th>Mark</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bullet</td>
+<td>work not started</td>
+</tr>
+<tr>
+<td>check mark</td>
+<td>work completed</td>
+</tr>
+<tr>
+<td><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /></td>
+<td>on-going work</td>
+</tr>
+<tr>
+<td><img alt="💪" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f4aa.svg" title=":muscle:" /></td>
+<td>stretch goal</td>
+</tr>
+<tr>
+<td><img alt="🔴" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f534.svg" title=":red_circle:" /></td>
+<td>missing link</td>
+</tr>
+</tbody>
+</table>
+<h2 id="themes">Themes</h2>
+<p>Our roadmap covers the broadly the following themes:
+- Become the best editor for anyone who relies on accessibility features
+- Improve performance, scalability, and security of VS Code and its extensions
+- Tackle some of the most wanted and most emotional user features
+- Polishing and a constant trickle of design refreshments
+- Incrementally improve already existing features
+- Responsibly enable extensions that have broader extensibility requirements
+- Tackle a couple of big rocks that push the boundaries of what VS Code can do</p>
+<h2 id="fundamentals">Fundamentals</h2>
+<ul>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Make VS Code an outstandingly accessible developer tool. We'll engage and work with our community to get input and guidance, and we need you to keep us honest.</li>
+<li>Improve support for RTL languages.</li>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Keep start-up times within a predictable and suitable range for users across all platforms and improve the overall performance for large workspace:</li>
+<li>Load less code on start-up and investigate improving the workbench restoration time by expanding on the <a href="https://code.visualstudio.com/updates/v1_26#_rapid-render">rapid render</a> approach.</li>
+<li>Continuously monitor the size of the VS Code download to ensure it downloads in seconds no matter where you are.</li>
+<li>Improve VS Code performance in large workspaces</li>
+<li>Investigate 'working sets' of files and folders in the file explorer</li>
+<li>Provide guidance to users how to configure VS Code</li>
+<li>Improve Open File / Quick Pick performance</li>
+<li>Make VS Code more secure by running renderer processes <strong>without</strong> access to <code>node</code> APIs.</li>
+</ul>
+<h2 id="workbench">Workbench</h2>
+<ul>
+<li>Workbench layout</li>
+<li>Support for detachable workbench parts is our most upvoted <a href="https://github.com/Microsoft/vscode/issues/10121">feature request</a> which due to <a href="https://github.com/Microsoft/vscode/issues/10121#issuecomment-345497635">architectural issues</a> is challenging to implement. We will explore how we can work around this limitation. This investigation will focus on detaching terminals (2<sup>nd</sup> most upvoted feature request) and editors.</li>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Allows to move views between the panel and sidebar.</li>
+<li>Support a more flexible workbench layout such as allow sidebars on the left and the right. For example, you could have your outline on the right and the file explorer on the left.</li>
+<li>Investigate how to safely provide richer customizability in the workbench</li>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Support <a href="https://github.com/Microsoft/vscode/issues/12176">custom editors</a>.</li>
+<li>Investigate custom views based on <code>WebViews</code>.</li>
+<li>Support to configure workbench font and font size</li>
+<li>Broaden support to customize the UI, e.g. context menus.</li>
+</ul>
+<h2 id="settings">Settings</h2>
+<ul>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Support <a href="https://github.com/microsoft/vscode/issues/2743">synchronizing settings and extensions</a> across VS Code installations on different machines.</li>
+<li>In the settings editor, provide high-fidelity support for additional settings types such as colors.</li>
+<li>Provide a dedicated theme customization editor.</li>
+<li>Support to synchronize settings between the insider and stable versions of VS Code</li>
+</ul>
+<h2 id="search">Search</h2>
+<ul>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Show search results not only in the side bar or a panel, but also in an editor. This allows users to work with multiple search results and to see additional context for each match.</li>
+</ul>
+<h2 id="ux">UX</h2>
+<ul>
+<li>Continue to incrementally improve presentation and behavior across the board. Examples include:</li>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Harmonize hovers, completion items, completion item details</li>
+<li>Welcome page</li>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Use tabs instead of the terminal dropdown</li>
+<li>Revisit/review the first run experience for VS Code as well as newly installed extensions. For example, we want to reduce the number of notifications that are shown.</li>
+<li>Touch and mobile support for VS Code in the browser</li>
+<li>Investigate how users can express what they want to use VS Code for after they installed it. For example, a user wants to develop a website with a Go backend, VS Code should provide light-weight guidance to get all the right extensions and configure them appropriately.</li>
+</ul>
+<h2 id="editor">Editor</h2>
+<ul>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Notebooks (for example Jupyter) have become a popular means in data science and education and are making their way into every corner of development. We'll explore how VS Code and the Monaco Editor can provide a rich notebook experience (deep language services, light-weight/simple debugging).</li>
+<li>Investigate isolating the editor from misbehaving grammars</li>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Investigate support for semantic coloring</li>
+<li>Investigate how to simplify the maintenance of textmate grammars</li>
+<li>Expand 'inline' experiences</li>
+<li>Inset editing</li>
+<li>Inline errors</li>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Richer minimap</li>
+<li>Inline values (on by default, see debugging)</li>
+<li>Smarter indent support (e.g. for Python)</li>
+<li>Prevent tooltips from getting into your way when editing</li>
+<li>Support word-wrap in the diff editor</li>
+</ul>
+<h2 id="languages">Languages</h2>
+<ul>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Enable programming language extensions to provide support for call hierarchies.</li>
+<li>Enable programming language extensions to provide support for type hierarchies.</li>
+<li>Improve support for workspace-level edits (an semantic unit comprised of name, location, and content manipulations across multiple files)</li>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Enable language extensions to participate in workspace edits such as rename or move.</li>
+<li>Enable an one-step undo of complex workspace edits.</li>
+<li>Investigate how a user can preview workspace edits (e.g. preview the changes of a rename refactoring).</li>
+<li>Incrementally improve support for nested languages. This will be code changes on our side as well as samples and documentations.</li>
+</ul>
+<h3 id="typescript">TypeScript</h3>
+<p>We will continue to collaborate deeply with the TypeScript team to deliver the richest code editing, navigation, and understanding experiences for both TypeScript and JavaScript. see also the <a href="https://github.com/Microsoft/TypeScript/wiki/Roadmap">TypeScript roadmap</a>. One focus item will be to show the errors and warnings for the entire project(s) in your workspace.</p>
+<h3 id="htmlcss">HTML/CSS</h3>
+<ul>
+<li>Provide a live preview.</li>
+</ul>
+<h2 id="scm">SCM</h2>
+<ul>
+<li>Investigate synergies between the core git support and GitLens</li>
+<li>Provide an overall improved GitHub integration, e.g. we'll make it easier to hover over issue URL in your code or associate a GitHub issue with your commit.</li>
+<li>Provide full merge support (3-way)</li>
+<li>Investigate support for showing a local history of a file and folder and combine that with the git history</li>
+<li>Investigate timeline support for combining local history with other events such as successful test runs or refactorings</li>
+</ul>
+<h2 id="debug">Debug</h2>
+<ul>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Leverage language services to improve debug experience. For example, improve hovering and inline values by leveraging the knowledge about the programming language so that the <code>Inline Values</code> feature can be enabled by default</li>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Provide improved 'full stack' debugging, i.e. combined <code>node</code> (server) and <code>chrome</code> (client) debugging.</li>
+</ul>
+<h2 id="testing">Testing</h2>
+<ul>
+<li>Investigate how VS Code can improve the testing support. Several extensions are already providing testing support, explore what APIs/UIs could be added to improve these testing extensions and the test running experience.</li>
+</ul>
+<h2 id="install">Install</h2>
+<ul>
+<li>Investigate migrating to the <a href="https://docs.microsoft.com/en-us/windows/msix/">MSIX installer</a> on Windows.</li>
+</ul>
+<h2 id="terminal">Terminal</h2>
+<ul>
+<li>Investigate how to persist integrated terminal sessions across window reloads and application restarts.</li>
+<li>Investigate how to support problem matchers to run in any internal terminals</li>
+</ul>
+<h2 id="extensions">Extensions</h2>
+<ul>
+<li>Extension Acquisition</li>
+<li>Revisit how users find and install extensions including a simple text-based approach</li>
+<li>Make it easier for users to pick and choose which functionality they want from extensions packs.</li>
+<li>Improve the recommendation system, e.g., allow users to ask for recommendations based on their prior use of VS Code.</li>
+<li>
+<p>Add support to only activate signed extensions (see <em>Extension Authoring</em>).</p>
+</li>
+<li>
+<p>Extension Management</p>
+</li>
+<li>Make the consumption of extensions more secure and improve the process for how we handle malicious extensions.</li>
+<li>
+<p>Show runtime information for an extension (activation state, performance, error logs)</p>
+</li>
+<li>
+<p>Extension Authoring</p>
+</li>
+<li>Provide clear guidance to extension authors for how to structure their functionality so that their users can get as little or as much functionality as they want. For example, ensure text editor lovers can get Python language support without too much overhead.</li>
+<li>Provide an integrated 'Welcome' experience for extensions.</li>
+<li>Investigate how to effectively inform users about new features provided by an extension update.</li>
+<li>Investigate into play grounds like the VS Code playground (<code>Help&gt;Interactive Playground</code>) for extensions.</li>
+<li>Provide extensions more control over the sequence and grouping of their settings in the settings editor, e.g., support to group <em>commonly used</em> settings.</li>
+<li>
+<p>Give extensions more realtime insights into how user configured them, e.g. the user hides the custom tree view your extension contributes from the explorer.</p>
+</li>
+<li>
+<p>Extension Publishing</p>
+</li>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Work with the marketplace to allow platform specific flavors of extensions.</li>
+<li>Support publishing of signed extensions.</li>
+<li>Add support for verified publishers.</li>
+<li>Investigate providing a GitHub action for publishing to the marketplace.</li>
+</ul>
+<h2 id="contributions-to-vs-code-extensions">Contributions to VS Code Extensions</h2>
+<p>Our teams contributes to a number of extensions that are available in the market place.</p>
+<p>Our main focus will be on the following extensions:</p>
+<ul>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> <a href="https://github.com/microsoft/vscode-remote-release/wiki/Roadmap">VS Code Remote</a></li>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github">GitHub Pull Request extension</a> and related extensions</li>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account">Azure Account extension</a></li>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> <a href="https://marketplace.visualstudio.com/items?itemName=octref.vetur">Vue extension</a></li>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> <a href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens">GitLens extension</a></li>
+</ul>
+<p>We will continue to maintain the following extensions:
+* <img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> <a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint">ES Lint</a>
+* <img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> <a href="https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby">Ruby</a>
+* <img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> <a href="https://marketplace.visualstudio.com/items?itemName=bierner.github-markdown-preview">Markdown customization extensions</a></p>
+<p>We will investigate into improving the performance of popular extensions that not performing as well as users expect
+   - <a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer">Bracket Pair Colorizer</a>
+   - <a href="https://marketplace.visualstudio.com/items?itemName=vscodevim.vim">VIM</a></p>
+<h2 id="contributions-to-underlying-components-and-technologies">Contributions to Underlying Components and Technologies</h2>
+<p>VS Code is made possible through a wide range of technologies. Below are examples of technologies in which we are particularly active.</p>
+<h3 id="language-server-protocol">Language Server Protocol</h3>
+<ul>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Continue to refine and improve the <a href="https://microsoft.github.io/language-server-protocol/">Language Server Protocol</a> with support from the community.</li>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Continue to refine and improve the <a href="https://github.com/Microsoft/language-server-protocol/blob/master/indexFormat/specification.md">Language Server Index Format</a> with support from the community.</li>
+</ul>
+<h3 id="debug-adaptor-protocol">Debug Adaptor Protocol</h3>
+<ul>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Continue to refine and improve the <a href="https://microsoft.github.io/debug-adapter-protocol/">Debug Adapter Protocol</a> with support from the community.</li>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Expose more UI for DAP features that are currently not surfaced in the VS Code debugging UI. This includes moving the loaded scripts UI into the core. </li>
+</ul>
+<h3 id="xtermjs">xterm.js</h3>
+<ul>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Provide ongoing improvements to <a href="https://github.com/xtermjs/xterm.js"><code>xterm.js</code></a> for performance, stability, and maintainability</li>
+</ul>
+<h2 id="engineering">Engineering</h2>
+<ul>
+<li>Migrate from <code>tslint</code> to <code>eslint</code>. Tslint will be <a href="https://github.com/palantir/tslint/issues/4534">deprecated</a>.</li>
+<li>Improve the built-in issue reporter, e.g., support to paste/attach images.</li>
+<li>Implement tooling that allows us to detect issues in which emotions fly high.</li>
+<li>Improve our "smoke" tests and revisit the current approach on how we implement them.</li>
+<li>Investigate automating how we sanity check all our binaries right before we release.</li>
+<li>Investigate moving our GitHub bots to GitHub actions.</li>
+<li>Improve our GitHub issue bots, examples:</li>
+<li>reject invalid incoming issues automatically</li>
+<li>make it easier to move issue to extension repositories</li>
+<li>automate training of our classification bot</li>
+</ul>
+<h2 id="explorations">Explorations</h2>
+<ul>
+<li>Explore support to synchronize more state when opening the same folder in different VS Code installs such as  untitled files, open files, focussed editor.</li>
+<li>Explore how to better provide support for low-end devices.</li>
+<li>Explore how to support new user in learning VS Code (interactive exploration mode, videos)  </li>
+<li>Explore how to make it easier to show, tell, and share your VS Code customizations.</li>
+<li>Explore how to support trying out VS Code for a particular language or technology stack without any local installation. For example, 'Debug Java code in less than 1 minute'.</li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li><img alt="🏃" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f3c3.svg" title=":runner:" /> Refresh all of our dated overview videos. </li>
+<li>Provide translated documentation for major user groups such as Mandarin, Korean, Spanish, Portuguese, French. Noe: the list of languages might change.</li>
+</ul>
+<h2 id="community-support">Community Support</h2>
+<ul>
+<li>We'll continue our work on our GitHub bots that enable members of our community give us a hand triaging and resolving issues.</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>These are examples of some of the work we will be focusing on in the next 12-18 months. We continuously tune the plan based on feedback and we will provide more detail in each of our <a href="https://github.com/Microsoft/vscode/wiki/Iteration-Plans">monthly iteration plans</a>. We will develop our next roadmap in around 12 months from now. Please follow along and let us know what you think! </p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../Home/" title="Home" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Home
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../Iteration-Plans/" title="Iteration Plans" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Iteration Plans
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

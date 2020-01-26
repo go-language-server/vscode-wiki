@@ -1,0 +1,1933 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Personal fork of Visual Studio Code Wiki">
+      
+      
+        <link rel="canonical" href="https://go-language-server.github.io/vscode-wiki/Keybinding-Issues/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>Keybinding Issues - Visual Studio Code Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.1b62728e.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-89201129-1", "https://go-language-server.github.io/vscode-wiki/")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#summary" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://go-language-server.github.io/vscode-wiki/" title="Visual Studio Code Wiki" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Visual Studio Code Wiki
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Keybinding Issues
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/go-language-server/vscode-wiki/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    zchee/golang-wiki
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://go-language-server.github.io/vscode-wiki/" title="Visual Studio Code Wiki" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Visual Studio Code Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/go-language-server/vscode-wiki/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    zchee/golang-wiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Home/" title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Project Management
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Project Management
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Roadmap/" title="Roadmap" class="md-nav__link">
+      Roadmap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Iteration-Plans/" title="Iteration Plans" class="md-nav__link">
+      Iteration Plans
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Development-Process/" title="Development Process" class="md-nav__link">
+      Development Process
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4" checked>
+    
+    <label class="md-nav__link" for="nav-2-4">
+      Issue Tracking
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-4">
+        Issue Tracking
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Issue-Tracking/" title="Issue Tracking" class="md-nav__link">
+      Issue Tracking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Issues-Triaging/" title="Issues Triaging" class="md-nav__link">
+      Issues Triaging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Performance-Issues/" title="Performance Issues" class="md-nav__link">
+      Performance Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Community-Issue-Tracking/" title="Community Issue Tracking" class="md-nav__link">
+      Community Issue Tracking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Keybinding Issues
+      </label>
+    
+    <a href="./" title="Keybinding Issues" class="md-nav__link md-nav__link--active">
+      Keybinding Issues
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#toc" class="md-nav__link">
+    TOC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshoot" class="md-nav__link">
+    Troubleshoot
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#troubleshoot-linux-keybindings" class="md-nav__link">
+    Troubleshoot Linux Keybindings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshoot-mac-keybindings" class="md-nav__link">
+    Troubleshoot Mac Keybindings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshoot-windows-keybindings" class="md-nav__link">
+    Troubleshoot Windows Keybindings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshoot-generic-keybindings" class="md-nav__link">
+    Troubleshoot generic Keybindings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecode-ekeycode-and-ekey" class="md-nav__link">
+    e.code, e.keyCode and e.key
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whats-wrong-with-ecode" class="md-nav__link">
+    What's wrong with e.code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whats-wrong-with-ekeycode" class="md-nav__link">
+    What's wrong with e.keyCode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whats-wrong-with-ekey" class="md-nav__link">
+    What's wrong with e.key
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-sum-up" class="md-nav__link">
+    To sum up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works-on-windows" class="md-nav__link">
+    How it works on Windows
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-pointers" class="md-nav__link">
+    Code pointers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works-on-macoslinux" class="md-nav__link">
+    How it works on macOS/Linux
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-pointers_1" class="md-nav__link">
+    Code pointers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deciphering-keybindingsjson" class="md-nav__link">
+    Deciphering keybindings.json
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Native-Crash-Issues/" title="Native Crash Issues" class="md-nav__link">
+      Native Crash Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Search-Issues/" title="Search Issues" class="md-nav__link">
+      Search Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Issue-Grooming/" title="Issue Grooming" class="md-nav__link">
+      Issue Grooming
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Build-Master/" title="Build Master" class="md-nav__link">
+      Build Master
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Release-Process/" title="Release Process" class="md-nav__link">
+      Release Process
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Running-the-Endgame/" title="Running the Endgame" class="md-nav__link">
+      Running the Endgame
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Related-Projects/" title="Related Projects" class="md-nav__link">
+      Related Projects
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Contributing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Contributing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../How-to-Contribute/" title="How to Contribute" class="md-nav__link">
+      How to Contribute
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Submitting-Bugs-and-Suggestions/" title="Submitting Bugs and Suggestions" class="md-nav__link">
+      Submitting Bugs and Suggestions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Feedback-Channels/" title="Feedback Channels" class="md-nav__link">
+      Feedback Channels
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Source-Code-Organization/" title="Source Code Organization" class="md-nav__link">
+      Source Code Organization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Coding-Guidelines/" title="Coding Guidelines" class="md-nav__link">
+      Coding Guidelines
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Smoke-Test/" title="Smoke Test" class="md-nav__link">
+      Smoke Test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Contributor-License-Agreement/" title="Contributor License Agreement" class="md-nav__link">
+      Contributor License Agreement
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/Microsoft/vscode/wiki/Requested-Extensions" title="Requested Extensions" class="md-nav__link">
+      Requested Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Extension-API-guidelines/" title="Extension API Guidelines" class="md-nav__link">
+      Extension API Guidelines
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Documentation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Documentation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://code.visualstudio.com/docs/extensions/overview" title="Extensions" class="md-nav__link">
+      Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://code.visualstudio.com/docs/extensionAPI/overview" title="API" class="md-nav__link">
+      API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://code.visualstudio.com/docs" title="Visual Studio Code" class="md-nav__link">
+      Visual Studio Code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/microsoft/vscode-docs" title="Document Repository" class="md-nav__link">
+      Document Repository
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/Microsoft/vscode/wiki/Adopting-Multi-Root-Workspace-APIs" title="Multi Root Workspace API" class="md-nav__link">
+      Multi Root Workspace API
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Adopting-Multi-Root-Workspace-APIs/" title="Adopting Multi Root Workspace APIs" class="md-nav__link">
+      Adopting Multi Root Workspace APIs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Code-Editor-Roadmap/" title="Code Editor Roadmap" class="md-nav__link">
+      Code Editor Roadmap
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Color-customization-color-id-changes/" title="Color customization color id changes" class="md-nav__link">
+      Color customization color id changes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Cross-Compiling-for-Debian-Based-Linux/" title="Cross Compiling for Debian Based Linux" class="md-nav__link">
+      Cross Compiling for Debian Based Linux
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../December-Pre-Release/" title="December Pre Release" class="md-nav__link">
+      December Pre Release
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../December-Test-Plan/" title="December Test Plan" class="md-nav__link">
+      December Test Plan
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Design-Goals/" title="Design Goals" class="md-nav__link">
+      Design Goals
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Differences-between-the-repository-and-Visual-Studio-Code/" title="Differences between the repository and Visual Studio Code" class="md-nav__link">
+      Differences between the repository and Visual Studio Code
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Editor-decorations-&-colors/" title="Editor decorations & colors" class="md-nav__link">
+      Editor decorations & colors
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Explain-extension-causes-high-cpu-load/" title="Explain extension causes high cpu load" class="md-nav__link">
+      Explain extension causes high cpu load
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Extension-API-process/" title="Extension API process" class="md-nav__link">
+      Extension API process
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Feature-Areas/" title="Feature Areas" class="md-nav__link">
+      Feature Areas
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../IME-Test/" title="IME Test" class="md-nav__link">
+      IME Test
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Insiders-Release-Notes/" title="Insiders Release Notes" class="md-nav__link">
+      Insiders Release Notes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Known-issues/" title="Known issues" class="md-nav__link">
+      Known issues
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Lists-And-Trees/" title="Lists And Trees" class="md-nav__link">
+      Lists And Trees
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../November-Plan/" title="November Plan" class="md-nav__link">
+      November Plan
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Performance-Issues-(old)/" title="Performance Issues (old)" class="md-nav__link">
+      Performance Issues (old)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Pointer-Device--&-Touch-support/" title="Pointer Device & Touch support" class="md-nav__link">
+      Pointer Device  & Touch support
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Publish-vscode-types/" title="Publish vscode types" class="md-nav__link">
+      Publish vscode types
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Removing-Insiders/" title="Removing Insiders" class="md-nav__link">
+      Removing Insiders
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Roadmap-2017/" title="Roadmap 2017" class="md-nav__link">
+      Roadmap 2017
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Roadmap-2018/" title="Roadmap 2018" class="md-nav__link">
+      Roadmap 2018
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Roadmap-2019/" title="Roadmap 2019" class="md-nav__link">
+      Roadmap 2019
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Semantic-Highlighting-Overview/" title="Semantic Highlighting Overview" class="md-nav__link">
+      Semantic Highlighting Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Setting-Descriptions/" title="Setting Descriptions" class="md-nav__link">
+      Setting Descriptions
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Terminal-Issues/" title="Terminal Issues" class="md-nav__link">
+      Terminal Issues
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../UX/" title="UX" class="md-nav__link">
+      UX
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Working-with-xterm.js/" title="Working with xterm.js" class="md-nav__link">
+      Working with xterm.js
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../[WIP]-Code-Editor-Design-Doc/" title="[WIP] Code Editor Design Doc" class="md-nav__link">
+      [WIP] Code Editor Design Doc
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../[WIP]-Design-Checklist/" title="[WIP] Design Checklist" class="md-nav__link">
+      [WIP] Design Checklist
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../[WIP]-Design-Principles/" title="[WIP] Design Principles" class="md-nav__link">
+      [WIP] Design Principles
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#toc" class="md-nav__link">
+    TOC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshoot" class="md-nav__link">
+    Troubleshoot
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#troubleshoot-linux-keybindings" class="md-nav__link">
+    Troubleshoot Linux Keybindings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshoot-mac-keybindings" class="md-nav__link">
+    Troubleshoot Mac Keybindings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshoot-windows-keybindings" class="md-nav__link">
+    Troubleshoot Windows Keybindings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshoot-generic-keybindings" class="md-nav__link">
+    Troubleshoot generic Keybindings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecode-ekeycode-and-ekey" class="md-nav__link">
+    e.code, e.keyCode and e.key
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whats-wrong-with-ecode" class="md-nav__link">
+    What's wrong with e.code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whats-wrong-with-ekeycode" class="md-nav__link">
+    What's wrong with e.keyCode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whats-wrong-with-ekey" class="md-nav__link">
+    What's wrong with e.key
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-sum-up" class="md-nav__link">
+    To sum up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works-on-windows" class="md-nav__link">
+    How it works on Windows
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-pointers" class="md-nav__link">
+    Code pointers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works-on-macoslinux" class="md-nav__link">
+    How it works on macOS/Linux
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-pointers_1" class="md-nav__link">
+    Code pointers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deciphering-keybindingsjson" class="md-nav__link">
+    Deciphering keybindings.json
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/go-language-server/vscode-wiki/edit/master/docs/Keybinding-Issues.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="summary">Summary</h1>
+<p>This page documents workarounds for known issues related to VS Code keybindings and explains how VS Code handles keybindings and why it does what it does for the curious.</p>
+<h2 id="toc">TOC</h2>
+<ul>
+<li>Quick troubleshoot<ul>
+<li><a href="#troubleshoot-linux-keybindings">Troubleshoot keybindings on Linux</a></li>
+<li><a href="#troubleshoot-mac-keybindings">Troubleshoot keybindings on Mac</a></li>
+<li><a href="#troubleshoot-windows-keybindings">Troubleshoot keybindings on Windows</a></li>
+<li><a href="#troubleshoot-generic-keybindings">Troubleshoot generic keybindings</a></li>
+</ul>
+</li>
+<li>e.code, e.keyCode and e.key</li>
+<li>How it works on Windows</li>
+<li>How it works on macOS/Linux</li>
+<li>Deciphering keybindings.json</li>
+</ul>
+<h2 id="troubleshoot">Troubleshoot</h2>
+<h3 id="troubleshoot-linux-keybindings">Troubleshoot Linux Keybindings</h3>
+<ul>
+<li>
+<p>Are you connecting to the Linux machine via some form of virtualization or remote desktop software?</p>
+<ul>
+<li><strong>symptoms</strong>: e.g. pressing <kbd>AltGr</kbd> acts as <code>Backspace</code>, pressing <kbd>C</kbd> acts as <code>ArrowLeft</code>, etc.</li>
+<li><strong>solution</strong>: use <code>"keyboard.dispatch": "keyCode"</code> in your settings and restart VS Code.</li>
+<li><strong>explanation</strong>: VS Code on Linux dispatches keybindings using scan codes to accomodate various keyboard layouts. This works well when sitting physically at the machine and the OS is the one creating keyboard events, but some virtualization / remote desktop software creates keyboard events with incorrect scan codes.</li>
+</ul>
+</li>
+<li>
+<p>Are you switching keyboard layouts while VS Code is running?</p>
+<ul>
+<li><strong>symptoms</strong>: VS Code keybindings reflect the keyboard layout that was active when VS Code was launched.</li>
+<li><strong>solution 1</strong>: Reload VS Code after switching keyboard layouts. <kbd>F1</kbd> <code>&gt; Reload Window</code></li>
+<li><strong>solution 2</strong>: Define your own custom keybindings based on scan codes. e.g. <code>"key": "ctrl+[Backquote]"</code> will always be the same physical key irrespective of keyboard layouts.</li>
+<li><strong>explanation</strong>: VS Code on Linux <strong>does not</strong> detect switching the keyboard layout. We have an <a href="https://github.com/Microsoft/vscode/issues/23690">open feature request and a PR is welcome - #23690</a></li>
+</ul>
+</li>
+<li>
+<p>Are you on CentOS or ArchLinux or perhaps on Ubuntu with KDE?</p>
+<ul>
+<li><strong>symptoms</strong>: VS Code keybindings reflect a keyboard layout that I have installed, but not the active one.</li>
+<li><strong>solution 1</strong>: make sure <code>setxkbmap -query</code> returns as the first keyboard layout the one you want to work with in VS Code.</li>
+<li><strong>solution 2</strong>: use <code>"keyboard.dispatch": "keyCode"</code> in your settings and restart VS Code. This will prevent VS Code from trying to determine your keyboard layout whatsoever.</li>
+<li><strong>explanation</strong>: Switching keyboard layouts under some Linux window managers does not result in a change in the low level X window APIs VS Code uses to read the current keyboard layout. This means that VS Code ends up sometimes reading one of the other configured keyboard layouts and not the current active one. PR welcome: <a href="https://github.com/Microsoft/vscode/issues/23505">#23505</a>, <a href="https://github.com/Microsoft/vscode/issues/24166">#24166</a></li>
+</ul>
+</li>
+<li>
+<p>Are you customizing keyboard mappings via <code>setxkbmap</code> or equivalents?</p>
+<ul>
+<li><strong>symptoms</strong>: customizations done via <code>setxkbmap</code> or equivalents have no effect in VS Code.</li>
+<li><strong>solution</strong>: use <code>"keyboard.dispatch": "keyCode"</code> in your settings and restart VS Code.</li>
+<li><strong>explanation</strong>: VS Code does not honour keyboard mappings at this time when determining what scan codes it should listen for. <a href="https://github.com/Microsoft/vscode/issues/23991">Ideas and PR welcome - #23991</a></li>
+</ul>
+</li>
+<li>
+<p>Are you using some keyboard layout that remaps more than the printable characters?</p>
+<ul>
+<li><strong>symptoms</strong>: e.g. the Neo keyboard layout does not work entirely in VS Code.</li>
+<li><strong>solution</strong>: use <code>"keyboard.dispatch": "keyCode"</code> in your settings and restart VS Code. This will prevent VS Code from trying to determine your keyboard layout whatsoever.</li>
+<li><strong>explanation</strong>: VS Code only looks at scan codes that usually produce printable characters in determining what scan codes to listen to. <a href="https://github.com/Microsoft/vscode/issues/24043">Ideas and PR welcome - #24043</a></li>
+</ul>
+</li>
+<li>
+<p>An important action is not mapped to a good keybinding by default.</p>
+<ul>
+<li><strong>symptoms</strong>: e.g. the Toggle Integrated Terminal action has no default keybinding on the Ukrainian keyboard layout, the Comment Line action is bound to <kbd>Ctrl+Shift+7</kbd> on the German keyboard layout.</li>
+<li><strong>solution</strong>: use the Keybinding UI or <code>keybindings.json</code> file to define a custom keybinding that suits your needs.</li>
+<li><strong>explanation</strong>: VS Code does not ship with default keybindings optimized per keyboard layout. For example, <kbd>Ctrl+`</kbd> cannot be mapped by VS Code automatically to a scan code on the Ukrainian keyboard layout because no modifier + scan code combination produces <kbd>`</kbd> on the Ukrainian keyboard layout. You can upvote in <a href="https://github.com/Microsoft/vscode/issues/1240">issue #1240</a>.</li>
+</ul>
+</li>
+<li>
+<p>Experiencing any other issue?</p>
+<ul>
+<li><strong>try</strong>: use <code>"keyboard.dispatch": "keyCode"</code> in your settings and restart VS Code.</li>
+<li><strong>further troubleshooting</strong>: <a href="#troubleshoot-generic-keybindings">Troubleshoot generic keybindings</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="troubleshoot-mac-keybindings">Troubleshoot Mac Keybindings</h3>
+<ul>
+<li>
+<p>Are you using a custom installed keyboard layout with its own sub-layouts?</p>
+<ul>
+<li><strong>symptoms</strong>: changing the sub-layout to Dvorak - QWERTY ⌘ in the custom Chinese pinyin layout is not reflected in VS Code</li>
+<li><strong>solution</strong>: use <code>"keyboard.dispatch": "keyCode"</code> in your settings and restart VS Code.</li>
+<li><strong>explanation</strong>: using custom keyboard layouts with their own sub-layouts cannot be detected by VS Code because the keyboard layout reports the same identifier when the sub-layout is changed.</li>
+</ul>
+</li>
+<li>
+<p>Are you using an external ISO keyboard attached to a laptop with an ANSI keyboard?</p>
+<ul>
+<li><strong>symptoms</strong>: <code>[Backquote]</code> and <code>[IntlBackslash]</code> are "swapped".</li>
+<li><strong>solution</strong>: press a key on the keyboard you want to use. Wait up to 3s and VS Code should catch up.</li>
+<li><strong>explanation</strong>: On ISO keyboards, macOS swaps the scan codes for <code>[Backquote]</code> and <code>[IntlBackslash]</code>. We respect this swapping. However, Chromium, in order to stay W3C spec compliant, decided to unswap the two scan codes. We cannot detect when Chromium unswaps the scan codes on a keyboard event basis, we need to poll and check if the last keyboard event came from an ISO keyboard and then expect that Chromium swaps the scan codes such that we can un-un-swap them. <a href="https://github.com/Microsoft/vscode/issues/26506">Read more in issue #26506</a></li>
+</ul>
+</li>
+<li>
+<p>Are you using some keyboard layout that remaps more than the printable characters?</p>
+<ul>
+<li><strong>symptoms</strong>: e.g. the Neo keyboard layout does not work entirely in VS Code.</li>
+<li><strong>solution</strong>: use <code>"keyboard.dispatch": "keyCode"</code> in your settings and restart VS Code. This will prevent VS Code from trying to determine your keyboard layout whatsoever.</li>
+<li><strong>explanation</strong>: VS Code only looks at scan codes that usually produce printable characters in determining what scan codes to listen to. <a href="https://github.com/Microsoft/vscode/issues/24043">Ideas and PR welcome - #24043</a></li>
+</ul>
+</li>
+<li>
+<p>An important action is not mapped to a good keybinding by default.</p>
+<ul>
+<li><strong>symptoms</strong>: e.g. the Toggle Integrated Terminal action has no default keybinding on the Ukrainian keyboard layout, the Comment Line action is bound to <kbd>Ctrl+Shift+7</kbd> on the German keyboard layout.</li>
+<li><strong>solution</strong>: use the Keybinding UI or <code>keybindings.json</code> file to define a custom keybinding that suits your needs.</li>
+<li><strong>explanation</strong>: VS Code does not ship with default keybindings optimized per keyboard layout. For example, <kbd>Ctrl+`</kbd> cannot be mapped by VS Code automatically to a scan code on the Ukrainian keyboard layout because no modifier + scan code combination produces <kbd>`</kbd> on the Ukrainian keyboard layout. You can upvote in <a href="https://github.com/Microsoft/vscode/issues/1240">issue #1240</a>.</li>
+</ul>
+</li>
+<li>
+<p>Experiencing any other issue?</p>
+<ul>
+<li><strong>try</strong>: use <code>"keyboard.dispatch": "keyCode"</code> in your settings and restart VS Code.</li>
+<li><strong>further troubleshooting</strong>: <a href="#troubleshoot-generic-keybindings">Troubleshoot generic keybindings</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="troubleshoot-windows-keybindings">Troubleshoot Windows Keybindings</h3>
+<ul>
+<li>
+<p>An important action is not mapped to a good keybinding by default.</p>
+<ul>
+<li><strong>symptoms</strong>: e.g. an important action has no keybinding on a specific keyboard layout out of the box or it is an unfortunate one.</li>
+<li><strong>solution</strong>: use the Keybinding UI or <code>keybindings.json</code> file to define a custom keybinding that suits your needs.</li>
+<li><strong>explanation</strong>: VS Code does not ship with default keybindings optimized per keyboard layout. Keyboard layouts under Windows are free to more, remove, or add a set of key codes and it is possible that under your keyboard layout a specific key code, e.g. <code>VK_OEM_3</code> is not used. You can upvote in <a href="https://github.com/Microsoft/vscode/issues/1240">issue #1240</a>.</li>
+</ul>
+</li>
+<li>
+<p>Experiencing any other issue?</p>
+<ul>
+<li><strong>further troubleshooting</strong>: <a href="#troubleshoot-generic-keybindings">Troubleshoot generic keybindings</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="troubleshoot-generic-keybindings">Troubleshoot generic Keybindings</h3>
+<ul>
+<li>
+<p>When I press a key combination, VS Code does not react</p>
+<ul>
+<li><strong>symptoms</strong>: e.g. <kbd>Ctrl+Alt+Up</kbd> does not add a cursor up, it rotates the screen.</li>
+<li><strong>solution</strong>: check what key combination we receive from the OS. If we don't receive a good key combination, you need to configure your OS or drivers to release that key combination to applications. e.g.:
+   <img alt="keyboard-input" src="https://cloud.githubusercontent.com/assets/5047891/25478333/fe31c830-2b40-11e7-865c-b2c3bb10dd75.gif" /></li>
+</ul>
+</li>
+<li>
+<p>A keybinding does something unexpected.</p>
+<ul>
+<li><strong>symptoms</strong>: e.g. <kbd>Cmd+Q</kbd> does not quit on mac.</li>
+<li><strong>solution</strong>: identify and remove the keybinding rule that runs on that specific keypress. run <code>code --disable-extensions</code> or try to identify the keybinding rule that you don't like and remove it via the Keybindings UI or via editing directly <code>keybindings.json</code>. The keybindings contributed by extensions are always near the bottom of the Default keybindings.json file.</li>
+<li><strong>explanation</strong>: VS Code extensions can overwrite the defaults VS Code ships with. We do our best to present only valid keybindings in dialogs and hovers, but sometimes a keybinding rule contributed by an extension <em>shadows</em> a built-in rule in a certain context.</li>
+</ul>
+</li>
+<li>
+<p>I cannot type a character via <kbd>AltGr+[Key]</kbd> or <kbd>Alt+[Key]</kbd> or <kbd>Ctrl+Alt+[Key]</kbd></p>
+<ul>
+<li><strong>symptoms</strong>: e.g. I cannot type <code>[</code> via <kbd>AltGr+8</kbd> on the German keyboard layout.</li>
+<li><strong>solution</strong>: identify and remove the keybinding rule that runs on that specific keypress. run <code>code --disable-extensions</code> or try to identify the keybinding rule that you don't like and remove it via the Keybindings UI or via editing directly <code>keybindings.json</code>. The keybindings contributed by extensions are always near the bottom of the Default keybindings.json file. e.g. <code>{ "key": "ctrl+alt+8" }</code> in <code>keybindings.json</code> will completely free up that keypress.</li>
+<li><strong>explanation</strong>: VS Code does not contain default keybindings that are of the form <kbd>Ctrl+Alt+[Key]</kbd> on Windows, since these might produce vital characters. Some extensions, however, do not do so. You are in total control of the keybinding rules and you can remove the ones you don't want.</li>
+</ul>
+</li>
+<li>
+<p>I want to find out which commands are bound to a key combination.
+  <img alt="keyboard-conflicts" src="https://cloud.githubusercontent.com/assets/5047891/25484174/38f5b004-2b59-11e7-994b-dfa96ef043ce.gif" /></p>
+</li>
+<li>
+<p>I have tried <strong>all of the above</strong></p>
+<ul>
+<li>open an editor.</li>
+<li>Run <kbd>F1</kbd> <code>&gt; Developer: Inspect key mappings</code></li>
+<li>save the output to a file</li>
+<li>open an issue and explain thoroughly your setup and attach the file.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>This guide will explain how VS Code handles keybindings and guide you through identifying keybindings issues (especially related to different keyboard layouts).</p>
+<p>Please take the time to read through this detailed explanation before proceeding to troubleshooting.</p>
+<h2 id="ecode-ekeycode-and-ekey"><code>e.code</code>, <code>e.keyCode</code> and <code>e.key</code></h2>
+<p>Here is an example for <code>e.code</code>, <code>e.keyCode</code> and <code>e.key</code> values on Chromium, on Windows:</p>
+<table>
+
+<tr>
+<th>Windows US standard kb layout</th>
+<th>Windows GER Germany kb layout</th>
+</tr>
+
+<tr>
+<td colspan="2"><code>e.code: string</code></td>
+</tr>
+<tr>
+<td><a target="_blank" href="images/keyboard/scan_en_us.png"><img src="images/keyboard/scan_en_us.png" /></a></td>
+<td><a target="_blank" href="images/keyboard/scan_de_de.png"><img src="images/keyboard/scan_de_de.png" /></a></td>
+</tr>
+
+<tr>
+<td colspan="2"><code>e.keyCode: number</code></td>
+</tr>
+<tr>
+<td><a target="_blank" href="images/keyboard/keycode_en_us.png"><img src="images/keyboard/keycode_en_us.png" /></a></td>
+<td><a target="_blank" href="images/keyboard/keycode_de_de.png"><img src="images/keyboard/keycode_de_de.png" /></a></td>
+</tr>
+
+<tr>
+<td colspan="2"><code>e.key: string</code></td>
+</tr>
+<tr>
+<td><a target="_blank" href="images/keyboard/key_en_us.png"><img src="images/keyboard/key_en_us.png" /></a></td>
+<td><a target="_blank" href="images/keyboard/key_de_de.png"><img src="images/keyboard/key_de_de.png" /></a></td>
+</tr>
+
+</table>
+
+<p>Windows was chosen as an example because Windows is the only platform where <code>e.keyCode</code> has an actual correspondent at the Operating System level. More specifically, on Windows:</p>
+<ul>
+<li><code>e.code</code> is the equivalent of Windows <strong>scan codes</strong>.</li>
+<li><code>e.keyCode</code> is the equivalent of Windows <strong>virtual-keys</strong>.</li>
+<li><code>e.key</code> is the <strong>mostly</strong> produced character, except for dead keys, where it has the value <code>Dead</code>.</li>
+</ul>
+<p><strong>Keyboard layouts under Windows consist of two mappings</strong>:
+* the first one maps scan codes to virtual keys. For example, that is how <kbd>Z</kbd> and <kbd>Y</kbd> are swapped on the GER keyboard layout.
+* the second one maps virtual keys and modifiers to produced characters. For example, <kbd>Shift+0x37</kbd> produces <code>&amp;</code> on the US keyboard layout, while <kbd>Shift+0x37</kbd> produces <code>/</code> on the GER keyboard layout.</p>
+<p>Read more about how keyboard layouts work under Windows
+<a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms646267(v=vs.85).aspx">here</a>.</p>
+<h3 id="whats-wrong-with-ecode">What's wrong with <code>e.code</code></h3>
+<p>There's nothing wrong per-se, except, under Windows, all desktop applications that I could test dispatch on <code>e.keyCode</code>, i.e. it would be "non-native" for VS Code to dispatch on <code>e.code</code> on Windows.</p>
+<h3 id="whats-wrong-with-ekeycode">What's wrong with <code>e.keyCode</code></h3>
+<p>macOS and Linux do not have an Operating System level correspondant for <code>e.keyCode</code>. <strong>Keyboard layouts on macOS and Linux consist of a single mapping</strong>. Chromium does a somewhat decent job at coming up with values for <code>e.keyCode</code>, but all the values are fabricated, and <strong>any piece of code that ends up depending on <code>e.keyCode</code> will ultimately be incorrect on various keyboard layouts on macOS/Linux</strong>.</p>
+<h3 id="whats-wrong-with-ekey">What's wrong with <code>e.key</code></h3>
+<p>In some circumstances (i.e. combining accents), <code>e.key</code> has the value <code>Dead</code>. We cannot dispatch on <code>e.key</code> because the keys that produce combining accents would be unmappable in VS Code.</p>
+<p>Moreover, it is not possible to correlate modifier keys, <code>e.code</code> and <code>e.key</code> in any meaningful way without additional information. e.g.</p>
+<ul>
+<li>pressing <kbd>Ctrl+Alt+Digit7</kbd> results in <code>ctrlKey: true, altKey: true, key: "{"</code></li>
+<li>pressing <kbd>Ctrl+Alt+Digit6</kbd> results in <code>ctrlKey: true, altKey: true, key: "6"</code></li>
+<li>there is no way to determine that <kbd>Ctrl+Alt+</kbd> were "consumed" in producing <code>{</code> and were not "consumed" in producing <code>6</code>.</li>
+</ul>
+<h3 id="to-sum-up">To sum up</h3>
+<p><strong>On Windows, VS Code dispatches on <code>e.keyCode</code></strong>.</p>
+<p><strong>On macOS and Linux, VS Code dispatches on <code>e.code</code></strong>.</p>
+<hr />
+<h2 id="how-it-works-on-windows">How it works on Windows</h2>
+<p>All built-in commands, extensions and user settings register keybindings in terms of <code>keyCode</code>. All Electron APIs (i.e. menus) refer to keybindings in terms of <code>keyCode</code>. The only special thing to do here is to be sure to present good labels in the UI to end-users.</p>
+<p>For example, the <code>Toggle Line Comment</code> action is bound to <kbd>Ctrl+0xBF</kbd>:</p>
+<table>
+<thead>
+<tr>
+<th>Kb Layout</th>
+<th>Scan Code</th>
+<th>Virtual Key</th>
+<th>Produced Character</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US</td>
+<td><code>[Slash]</code></td>
+<td><code>0xBF</code></td>
+<td><code>/</code></td>
+</tr>
+<tr>
+<td>GER</td>
+<td><code>[Backslash]</code></td>
+<td><code>0xBF</code></td>
+<td><code>#</code></td>
+</tr>
+</tbody>
+</table>
+<p>Therefore, the keybinding for <code>Toggle Line Comment</code> should be rendered as <kbd>Ctrl+/</kbd> on a US keyboard layout and as <kbd>Ctrl+#</kbd> on a GER keyboard layout. This is done by using the native node module <code>native-keymap</code>. It gives the virtual key and the produced characters for each scan code. e.g.:</p>
+<div class="highlight"><pre><span></span><span class="nx">Backslash</span><span class="o">:</span> <span class="p">{</span>
+   <span class="nx">vkey</span><span class="o">:</span> <span class="s2">&quot;VK_OEM_2&quot;</span><span class="p">,</span> <span class="c1">// well known name given to 0xBF</span>
+   <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;#&quot;</span><span class="p">,</span>
+   <span class="nx">withShift</span><span class="o">:</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">,</span>
+   <span class="nx">withAltGr</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+   <span class="nx">withShiftAltGr</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="code-pointers">Code pointers</h3>
+<ul>
+<li><a href="https://github.com/Microsoft/node-native-keymap/blob/master/src/keyboard_win.cc"><code>node-native-keymap</code></a></li>
+<li><a href="https://github.com/Microsoft/vscode/blob/master/src/vs/workbench/services/keybinding/common/windowsKeyboardMapper.ts"><code>WindowsKeyboardMapper</code></a></li>
+</ul>
+<h2 id="how-it-works-on-macoslinux">How it works on macOS/Linux</h2>
+<p>All built-in commands, extensions and user settings register keybindings in terms of <code>keyCode</code>. Therefore, the immediate thing to do here is to transform these keybindings in terms of <code>code</code>. This is done with an heuristic based on the produced characters.</p>
+<table>
+
+<tr>
+<th>Linux US standard kb layout</th>
+<th>Linux GER Switzerland kb layout</th>
+</tr>
+
+<tr>
+<td><a target="_blank" href="images/keyboard/scan_en_us.png"><img src="images/keyboard/scan_en_us.png" /></a></td>
+<td><a target="_blank" href="images/keyboard/scan_de_de.png"><img src="images/keyboard/scan_de_de.png" /></a></td>
+</tr>
+
+<tr>
+<td><a target="_blank" href="images/keyboard/key_en_us.png"><img src="images/keyboard/key_en_us.png" /></a></td>
+<td><a target="_blank" href="images/keyboard/key_de_ch.png"><img src="images/keyboard/key_de_ch.png" /></a></td>
+</tr>
+
+</table>
+
+<p>For example, the <code>Toggle Line Comment</code> action is bound to <kbd>Ctrl+0xBF</kbd>, which would produce <code>/</code> under the US standard keyboard layout:</p>
+<table>
+<thead>
+<tr>
+<th>Kb Layout</th>
+<th>Scan Code</th>
+<th>Virtual Key</th>
+<th>Produced Character</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US</td>
+<td><code>[Slash]</code></td>
+<td><code>0xBF</code></td>
+<td><code>/</code></td>
+</tr>
+<tr>
+<td>GER (CH)</td>
+<td><code>Shift+[Digit7]</code></td>
+<td><code>0xBF</code></td>
+<td><code>/</code></td>
+</tr>
+</tbody>
+</table>
+<p>Therefore, under the US keyboard layout, the action is bound to <kbd>Ctrl+/</kbd>, while on the GER (CH) keyboard layout it is bound to <kbd>Ctrl+Shift+Digit7</kbd>. This is done by using the native node module <code>native-keymap</code>. It gives the produced characters for each scan code. e.g.:</p>
+<div class="highlight"><pre><span></span><span class="nx">Digit7</span><span class="o">:</span> <span class="p">{</span>
+   <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;7&quot;</span><span class="p">,</span>
+   <span class="nx">withShift</span><span class="o">:</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span>
+   <span class="nx">withAltGr</span><span class="o">:</span> <span class="s2">&quot;|&quot;</span><span class="p">,</span>
+   <span class="nx">withShiftAltGr</span><span class="o">:</span> <span class="s2">&quot;⅞&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Since Electron APIs (i.e. menus) refer to keybindings based on <code>keyCode</code>, we cannot expose the keybindings to Electron in all circumstances.</p>
+<p>If the native node module fails to run (i.e. the mappings cannot be obtained), keybinding dispatching falls back to using <code>e.keyCode</code>.</p>
+<h3 id="code-pointers_1">Code pointers</h3>
+<ul>
+<li><a href="https://github.com/Microsoft/node-native-keymap/blob/master/src/keyboard_x.cc"><code>node-native-keymap</code></a></li>
+<li><a href="https://github.com/Microsoft/node-native-keymap/blob/master/src/keyboard_mac.mm"><code>node-native-keymap</code></a></li>
+<li><a href="https://github.com/Microsoft/vscode/blob/master/src/vs/workbench/services/keybinding/common/macLinuxKeyboardMapper.ts"><code>MacLinuxKeyboardMapper</code></a></li>
+</ul>
+<hr />
+<h2 id="deciphering-keybindingsjson">Deciphering <code>keybindings.json</code></h2>
+<p>Most of the keybindings serialized in <code>keybindings.json</code> refer to <code>e.keyCode</code>. Here is the table to figure them out:</p>
+<table>
+<thead>
+<tr>
+<th><code>keybindings.json</code></th>
+<th>Key Code Name</th>
+<th>Key Code Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><kbd>;</kbd></td>
+<td><kbd>VK_OEM_1</kbd></td>
+<td><code>0xBA</code></td>
+</tr>
+<tr>
+<td><kbd>=</kbd></td>
+<td><kbd>VK_OEM_PLUS</kbd></td>
+<td><code>0xBB</code></td>
+</tr>
+<tr>
+<td><kbd>,</kbd></td>
+<td><kbd>VK_OEM_COMMA</kbd></td>
+<td><code>0xBC</code></td>
+</tr>
+<tr>
+<td><kbd>-</kbd></td>
+<td><kbd>VK_OEM_MINUS</kbd></td>
+<td><code>0xBD</code></td>
+</tr>
+<tr>
+<td><kbd>.</kbd></td>
+<td><kbd>VK_OEM_PERIOD</kbd></td>
+<td><code>0xBE</code></td>
+</tr>
+<tr>
+<td><kbd>/</kbd></td>
+<td><kbd>VK_OEM_2</kbd></td>
+<td><code>0xBF</code></td>
+</tr>
+<tr>
+<td><kbd>`</kbd></td>
+<td><kbd>VK_OEM_3</kbd></td>
+<td><code>0xC0</code></td>
+</tr>
+<tr>
+<td><kbd>[</kbd></td>
+<td><kbd>VK_OEM_4</kbd></td>
+<td><code>0xDB</code></td>
+</tr>
+<tr>
+<td><kbd>\</kbd></td>
+<td><kbd>VK_OEM_5</kbd></td>
+<td><code>0xDC</code></td>
+</tr>
+<tr>
+<td><kbd>]</kbd></td>
+<td><kbd>VK_OEM_6</kbd></td>
+<td><code>0xDD</code></td>
+</tr>
+<tr>
+<td><kbd>'</kbd></td>
+<td><kbd>VK_OEM_7</kbd></td>
+<td><code>0xDE</code></td>
+</tr>
+<tr>
+<td><kbd>oem_102</kbd></td>
+<td><kbd>VK_OEM_102</kbd></td>
+<td><code>0xE2</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../Community-Issue-Tracking/" title="Community Issue Tracking" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Community Issue Tracking
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../Native-Crash-Issues/" title="Native Crash Issues" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Native Crash Issues
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
